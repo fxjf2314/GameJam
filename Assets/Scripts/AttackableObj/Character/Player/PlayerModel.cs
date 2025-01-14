@@ -23,18 +23,22 @@ public class PlayerModel : Character,IDataPersistence
     }
 
     public int maxHp = 100;
+        [Header("»÷µ¹ÂÊ%")]
     public int KnockDownRate;
-
-    // Start is called before the first frame update
-    void Start()
+    public override void attack(Character target, int index)
     {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (Random.Range(0, 101) <= KnockDownRate)
+        {
+            Skill skill = new Skill();
+            skill.damageType = DamageType.KnockDownDamage;
+            skill.damageAmount= skillList[index].damageAmount;
+            skill.minDamage = skillList[index].minDamage;
+            skill.maxDamage = skillList[index].maxDamage;
+            skill.destructive = skillList[index].destructive;
+            skill.effects = new List<Effect>(skillList[index].effects);
+            skillList[index] = skill;
+        }
+        base.attack(target, index);
     }
     public void SaveData(ref GameData gameData)
     {
