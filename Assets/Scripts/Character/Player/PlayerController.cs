@@ -51,6 +51,10 @@ public class PlayerController : MonoBehaviour
     public bool isCrouch;
     bool isCanStand;
     bool nextFrameStand;
+    //滑翔相关
+    public float glideSpeed;
+    public float glideFallingSpeed;
+    bool isCanGlide;
     //刚体
     public Rigidbody rb;
     #endregion
@@ -93,29 +97,44 @@ public class PlayerController : MonoBehaviour
         heightDifference = standHeight - crouchHeight;
         originCenter = collider.center;
         isGround = true;
+        isCanGlide = false;
     }
 
-     private void FixedUpdate()
+    private void FixedUpdate()
     {
         MoveAndJump();
+        OnGlide();
     }
 
     private void Update()
     {
         //更新下蹲状态
         IsCrouch();
+        IsCanGlide();
     }
+
+    private void IsCanGlide()
+    {
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            isCanGlide = true;
+        }
+        else if (isGround)
+        {
+            isCanGlide = false;
+        }
+    }
+
     void MoveAndJump()
     {
         isGround = Physics.CheckSphere(groundCheck.position, checkGroundRadius, groundLayer);
-        
+
         if (playerCanMove)
         {
             OnMove();
             OnJump();
         }
     }
-
     void OnMove()
     {
         //获取移动键的输入使玩家移动
@@ -184,6 +203,20 @@ public class PlayerController : MonoBehaviour
         }
         //SwitchAni();
     }
+    void OnGlide()
+    {
+        isGround = Physics.CheckSphere(groundCheck.position, checkGroundRadius, groundLayer);
+        if (isCanGlide && Input.GetKey(KeyCode.Space) && !isGround && !isCrouch && gameObject.transform.position.y >= 3)
+        {
+            rb.velocity = new Vector3(rb.velocity.x, 0.0f, rb.velocity.z);
+            Vector3 glideDirection = Vector3.forward;
+            glideDirection = transform.TransformDirection(glideDirection);
+            glideDirection *= glideSpeed;
+            glideDirection.y = rb.velocity.y;
+            rb.velocity = glideDirection;
+            rb.velocity += Vector3.down * glideFallingSpeed * Time.deltaTime;
+        }
+    }
 
     void IsCrouch()
     {
@@ -237,7 +270,6 @@ public class PlayerController : MonoBehaviour
         }
         return true;
     }
-
-    
 }
+    
 

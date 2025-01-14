@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
-
-public class MonsterController : MonoBehaviour
+public class MonsterController : Character
 {
     Transform player;
     Rigidbody monsterRb;
@@ -24,16 +23,6 @@ public class MonsterController : MonoBehaviour
         //∑¢ÀÕ“∆∂Ø÷∏¡Ó
         MoveToPlayer();
     }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if(collision.collider.CompareTag("Player"))
-        {
-            PlayerModel.Instance.hp -= 10;
-            PlayerModel.Instance.isPlayerAlive(collision.gameObject);
-        }
-    }
-
     void MoveToPlayer()
     {
         if (player != null)
@@ -54,10 +43,5 @@ public class MonsterController : MonoBehaviour
                 //agent.enabled= false;
             }
         }
-    }
-    
-    void Attack()
-    {
-        
     }
 }

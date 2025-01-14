@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerModel : MonoBehaviour,IDataPersistence
+public class PlayerModel : Character,IDataPersistence
 {
     static PlayerModel mInstance;
     public static PlayerModel Instance
@@ -23,11 +23,12 @@ public class PlayerModel : MonoBehaviour,IDataPersistence
     }
 
     public int maxHp = 100;
-    public int hp;
+    public int KnockDownRate;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -35,15 +36,6 @@ public class PlayerModel : MonoBehaviour,IDataPersistence
     {
         
     }
-
-    public void isPlayerAlive(GameObject player)
-    {
-        if(hp <= 0)
-        {
-            player.SetActive(false);
-        }
-    }
-
     public void SaveData(ref GameData gameData)
     {
         gameData.playerPos = transform.position;
