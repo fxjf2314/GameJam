@@ -34,12 +34,7 @@ public abstract class Character: AttackableObj
     {
         if (!gameObject.GetComponent<KnockDown>().cooldownDuration.isCoolingDown)
         {
-            print("ª˜µπ¡À");
             gameObject.GetComponent<KnockDown>().enabled = true;
-        }
-        else
-        {
-            print("¿‰»¥");
         }
     }
 }

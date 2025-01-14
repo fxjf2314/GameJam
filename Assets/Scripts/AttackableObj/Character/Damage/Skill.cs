@@ -5,8 +5,8 @@ using UnityEngine;
 public enum DamageType 
 {
     SimpleDamage,
-    EffectBasedDamage,
     KnockDownDamage,
+    EffectBasedDamage,
     StackableDamage
 }
 public enum Destructive
@@ -16,7 +16,17 @@ public enum Destructive
    monderate,
    high
 }
-
+[System.Serializable]
+public struct Effect
+{
+    [Header("改变(值增加,枚举类型直接变化)")]
+    public Skill targetSkill;
+    [Header("Player击倒率")]
+    public int KnockDownRate;
+    [Header("秒/每次")]
+    public float frequency;
+    public bool isCoolingDown;
+}
 [System.Serializable]
 public struct Skill
 {
@@ -25,4 +35,5 @@ public struct Skill
     public int minDamage;
     public int maxDamage;
     public Destructive destructive;
+    public List<Effect> effects;
 }

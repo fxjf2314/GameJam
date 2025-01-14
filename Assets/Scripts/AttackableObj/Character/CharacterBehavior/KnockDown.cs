@@ -9,34 +9,27 @@ public class KnockDown : MonoBehaviour
 
     private void OnEnable()
     {
-        if (gameObject.CompareTag("Player"))
-        {
-            gameObject.GetComponent<PlayerController>().enabled = false;
-        }
-        if (gameObject.CompareTag("Monster"))
-        {
-            gameObject.GetComponent<MonsterController>().enabled = false;
-        }
-        if (gameObject.transform.Find("Attack") != null)
-        {
-            gameObject.transform.Find("Attack").gameObject.SetActive(false);
-        }
+        SetState(false);
         Invoke("DisableSelf", duration);
         cooldownDuration.StartCoroutine(cooldownDuration.Cooldown(cooldownDuration.cooldownDuration));
     }
     private void OnDisable()
     {
+        SetState(true);
+    }
+    public void SetState(bool state)
+    {
         if (gameObject.CompareTag("Player"))
         {
-            gameObject.GetComponent<PlayerController>().enabled =true;
+            gameObject.GetComponent<PlayerController>().enabled = state;
         }
         if (gameObject.CompareTag("Monster"))
         {
-            gameObject.GetComponent<MonsterController>().enabled = true;
+            gameObject.GetComponent<MonsterController>().enabled = state;
         }
         if (gameObject.transform.Find("Attack") != null)
         {
-            gameObject.transform.Find("Attack").gameObject.SetActive(true);
+            gameObject.transform.Find("Attack").gameObject.SetActive(state);
         }
     }
     private void DisableSelf()

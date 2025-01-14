@@ -396,6 +396,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: 0
   attackInterval: 1
+  attackRecovery: 0.5
 --- !u!65 &772980591
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -417,6 +418,37 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.38662547, y: 0.063650295, z: 0.424741}
   m_Center: {x: 0.0008339882, y: 0.24521549, z: 0.23342763}
+--- !u!1 &904121898
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 904121899}
+  m_Layer: 0
+  m_Name: Trap
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &904121899
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 904121898}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.3716686, y: 4.3083425, z: 2.2771206}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -630,7 +662,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1182954502071487399, guid: 387026f02b2669a47abaa19ddf20666e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.000061035156
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1182954502071487399, guid: 387026f02b2669a47abaa19ddf20666e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -722,6 +754,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: 0
   attackInterval: 1
+  attackRecovery: 0.5
 --- !u!1 &1074137413
 GameObject:
   m_ObjectHideFlags: 0
@@ -1116,15 +1149,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fcce1be958321247ab0c296fc0170d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageList:
+  skillList:
   - damageType: 0
     damageAmount: 0
     minDamage: 10
     maxDamage: 18
-    destructive: 1
+    destructive: 0
+    effects:
+    - targetSkill:
+        damageType: 0
+        damageAmount: 0
+        minDamage: 0
+        maxDamage: 0
+        destructive: 0
+        effects: []
+      KnockDownRate: 3
+      frequency: 10
+      isCoolingDown: 0
   hp: 100
   maxHp: 100
-  KnockDownRate: 0
+  KnockDownRate: 50
 --- !u!114 &1215320059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1819,6 +1863,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3845442992956970047, guid: 5b60b18218d732b4fbeb0793b99dd283, type: 3}
+      propertyPath: m_Constraints
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 4002629530715168201, guid: 5b60b18218d732b4fbeb0793b99dd283, type: 3}
       propertyPath: m_IsTrigger
       value: 1
@@ -1831,9 +1879,37 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4373416602716158003, guid: 5b60b18218d732b4fbeb0793b99dd283, type: 3}
+      propertyPath: skillList.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4373416602716158003, guid: 5b60b18218d732b4fbeb0793b99dd283, type: 3}
+      propertyPath: skillList.Array.data[0].maxDamage
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4373416602716158003, guid: 5b60b18218d732b4fbeb0793b99dd283, type: 3}
+      propertyPath: skillList.Array.data[0].minDamage
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4373416602716158003, guid: 5b60b18218d732b4fbeb0793b99dd283, type: 3}
+      propertyPath: skillList.Array.data[0].damageType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4373416602716158003, guid: 5b60b18218d732b4fbeb0793b99dd283, type: 3}
+      propertyPath: skillList.Array.data[0].effects.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4373416602716158003, guid: 5b60b18218d732b4fbeb0793b99dd283, type: 3}
+      propertyPath: skillList.Array.data[0].effects.Array.data[0].isCoolingDown
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9122472959181023691, guid: 5b60b18218d732b4fbeb0793b99dd283, type: 3}
       propertyPath: m_Name
       value: UnripeTomatoe
+      objectReference: {fileID: 0}
+    - target: {fileID: 9122472959181023691, guid: 5b60b18218d732b4fbeb0793b99dd283, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1842,6 +1918,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 9122472959181023691, guid: 5b60b18218d732b4fbeb0793b99dd283, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6733404659127597443}
+    - targetCorrespondingSourceObject: {fileID: 9122472959181023691, guid: 5b60b18218d732b4fbeb0793b99dd283, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6733404659127597450}
+    - targetCorrespondingSourceObject: {fileID: 9122472959181023691, guid: 5b60b18218d732b4fbeb0793b99dd283, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6733404659127597449}
     - targetCorrespondingSourceObject: {fileID: 3374148916810696397, guid: 5b60b18218d732b4fbeb0793b99dd283, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1054857937}
@@ -1864,7 +1946,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 0
-  cooldownDuration: {fileID: 0}
+  cooldownDuration: {fileID: 6733404659127597450}
+--- !u!114 &6733404659127597449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1957157702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7374cfb1526dc64594a7b10dbd9210f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 6116952387615675813, guid: 246dde2245580134ba4ffa6525e57c67, type: 3}
+  parent: {fileID: 904121899}
+--- !u!114 &6733404659127597450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1957157702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ac0e57cca47622478679b9b0d52f068, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldownDuration: 0
+  isCoolingDown: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1876,4 +1986,5 @@ SceneRoots:
   - {fileID: 123974152}
   - {fileID: 1215320052}
   - {fileID: 1208358565}
+  - {fileID: 904121899}
   - {fileID: 1074137414}
