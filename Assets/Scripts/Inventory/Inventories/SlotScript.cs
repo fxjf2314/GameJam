@@ -70,6 +70,15 @@ public class SlotScript : MonoBehaviour,IPointerClickHandler,IClickable,IPointer
         items.OnClear += new UpdateStackEvent(UpdateSlot);
     }
 
+
+    public void Clear()
+    {
+        if(items.Count > 0)
+        {
+            items.Clear();
+        }
+    }
+
     public void RemoveItem(Item item)
     {
         if(!IsEmpty)

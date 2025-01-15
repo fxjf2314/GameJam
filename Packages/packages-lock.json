@@ -1,11 +1,10 @@
 {
   "dependencies": {
-    "com.tippinggame.f8framework": {
-      "version": "https://github.com/TippingGame/F8Framework.git",
+    "com.unity.2d.sprite": {
+      "version": "1.0.0",
       "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "61b088fa7f13466bd06737d887d369a55e5b0596"
+      "source": "builtin",
+      "dependencies": {}
     },
     "com.unity.cinemachine": {
       "version": "2.10.3",

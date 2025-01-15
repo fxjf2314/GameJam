@@ -1,4 +1,4 @@
-using F8Framework.Launcher;
+//using F8Framework.Launcher;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,12 +16,12 @@ public class Bag : Item,IUseable
     public BagScript MyBagScript { get;set; }
     public int Slots { get => slots; }
 
-    public void InitialDes()
+    /*public void InitialDes()
     { 
         
         
         description = FF8.Config.GetItemTypeByID(3).suit;
-    }
+    }*/
 
     public void Initialize(int slots)
     {

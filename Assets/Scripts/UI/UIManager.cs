@@ -8,14 +8,28 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    private Scrollbar scrollbar;
+    
     private static UIManager instance;
+
+    private Image mask;
+
+    private Bag bag;
 
     [SerializeField]
     private GameObject tooltip;
 
+    [SerializeField]
+    private GameObject TalentTree;
+
     private TextMeshProUGUI tooltipDes;
 
     private TextMeshProUGUI tooltipType;
+
+    private TextMeshProUGUI tooltipTitle;
+
+    [SerializeField]
+    private BagButton bagButton;
 
     [SerializeField]
     private UIFridge uiFridge;
@@ -23,23 +37,43 @@ public class UIManager : MonoBehaviour
     private Image tooltipIcon;
 
     private void Awake()
-    {
+    { 
+        scrollbar = GameObject.Find("FridgeScrollbar").GetComponent<Scrollbar>();
+        mask = GameObject.Find("Mask").GetComponent<Image>();
+        
+
+        //工具提示标题
+        tooltipTitle = tooltip.transform.GetChild(0).GetComponent<TextMeshProUGUI>();        
         //工具提示类别
-        tooltipType = tooltip.GetComponentInChildren<TextMeshProUGUI>();
+        
         //工具提示图标
-        Transform desIcon = tooltip.transform.GetChild(0);
+        Transform desIcon = tooltip.transform.GetChild(1);
         tooltipIcon = desIcon.GetComponentInChildren<Image>();
+        tooltipType = desIcon.GetComponentInChildren<TextMeshProUGUI>();
         //工具提示详细
-        Transform desChild = tooltip.transform.GetChild(1);
+        Transform desChild = tooltip.transform.GetChild(2);
         tooltipDes = desChild.GetComponentInChildren<TextMeshProUGUI>();
     }
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.C))
+        if(Input.GetKeyDown(KeyCode.G))
         {
+            scrollbar.value = 1;
+            //scrollbar.interactable = scrollbar.interactable == false ? true : false;
+            mask.enabled = mask.enabled == true ? false : true;
             uiFridge.OpenClose();
+            bagButton.Bag.MyBagScript.OpenClose();
         }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            
+            uiFridge.OpenClose();
+            TalentTree.SetActive(TalentTree.activeSelf == true ? false : true);
+
+        }
+
+
     }
 
     public static UIManager MyInstance
@@ -81,6 +115,7 @@ public class UIManager : MonoBehaviour
         tooltip.SetActive(true);
         tooltip.transform.position = position;
 
+        tooltipTitle.text = description.GetTitle();
         tooltipType.text = description.GetType();
         tooltipIcon.sprite = description.GetSprite();
         tooltipDes.text = description.GetDescription();

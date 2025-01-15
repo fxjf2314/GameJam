@@ -1,4 +1,4 @@
-using F8Framework.Launcher;
+
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
@@ -55,10 +55,10 @@ public class InventoryScript: MonoBehaviour
 
     private void Awake()
     {
-        FF8.Config.LoadAll();
+        //FF8.Config.LoadAll();
         Bag bag = (Bag)Instantiate(items[0]);
         bag.Initialize(20);
-        bag.InitialDes();
+        //bag.InitialDes();
         bag.Use();
     }
 
@@ -80,6 +80,13 @@ public class InventoryScript: MonoBehaviour
         {
             Apple apple = (Apple)Instantiate(items[1]);
             AddItem(apple);
+        }
+        if(Input.GetKeyDown(KeyCode.P))
+        {
+            AddItem((Armor)Instantiate(items[2]));
+            AddItem((Armor)Instantiate(items[3]));
+            AddItem((Armor)Instantiate(items[4]));
+            AddItem((Armor)Instantiate(items[5]));
         }
     }
 

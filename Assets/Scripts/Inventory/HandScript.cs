@@ -56,4 +56,17 @@ public class HandScript : MonoBehaviour
         MyMoveable = null;
         icon.color = new Color(0, 0, 0, 0);
     }
+
+    public void DeleteItem()
+    {
+        if(MyMoveable is Item && InventoryScript.MyInstance.MyFromSlot != null)
+        {
+            (MyMoveable as Item).MySlot.Clear();
+
+        }
+
+        Drop();
+
+        InventoryScript.MyInstance.MyFromSlot = null;
+    }
 }

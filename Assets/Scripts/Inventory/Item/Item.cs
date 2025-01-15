@@ -10,8 +10,11 @@ public abstract class Item : ScriptableObject, IMoveable, IDescribable
     [SerializeField]
     private int stackSize;
 
+    [SerializeField] 
+    private string Title;
+
     [SerializeField]
-    protected string description;
+    private string description;
 
     [SerializeField]
     private string type;
@@ -47,5 +50,10 @@ public abstract class Item : ScriptableObject, IMoveable, IDescribable
     public string GetType()
     {
         return type;
+    }
+
+    public string GetTitle()
+    {
+        return Title;
     }
 }

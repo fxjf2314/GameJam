@@ -22,6 +22,11 @@ public class Armor : Item
     [SerializeField]
     private int id;
 
+    internal ArmorType MyArmorType 
+    { 
+        get => armorType; 
+    }
+
     //套装名
     public override string GetDescription()
     {
@@ -29,8 +34,13 @@ public class Armor : Item
         
         if(id < 3 && id > 0)
         {
-            suitName += string.Format("\n土豆蘑菇----");
-            suitName += string.Format("\n两件套效果: 抵挡一次致命伤 (冷却时间一分钟)");
+            suitName += string.Format("<b>土豆蘑菇</b>----");
+            suitName += string.Format("\n两件套效果: \n抵挡一次致命伤 \n(冷却时间一分钟)");
+        }
+        if (id < 5 && id > 2)
+        {
+            suitName += string.Format("<b>鸡蘑菇</b>----");
+            suitName += string.Format("\n两件套效果: \n跳跃高度提升 ");
         }
         return base.GetDescription() + suitName;
     }

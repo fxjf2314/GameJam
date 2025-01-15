@@ -9,4 +9,6 @@ public interface IDescribable
     string GetDescription();
     
     Sprite GetSprite();
+
+    string GetTitle();
 }

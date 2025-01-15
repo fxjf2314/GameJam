@@ -12,6 +12,13 @@ public class BagButton : MonoBehaviour,IPointerClickHandler
     [SerializeField]
     private Sprite full, empty;
 
+    private Image mask;
+
+    private void Awake()
+    {
+        mask = GameObject.Find("Mask").GetComponent<Image>();
+    }
+
     public Bag Bag 
     { 
         get
@@ -35,16 +42,13 @@ public class BagButton : MonoBehaviour,IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if(eventData.button == PointerEventData.InputButton.Left)
+        
+        if (bag != null)
         {
-            if (bag != null)
-            {
-                bag.MyBagScript.OpenClose();
-            }
+            bag.MyBagScript.OpenClose();
         }
-    
-        
-        
-        
+
+        mask.enabled = mask.enabled == true ? false : true;
+
     }
 }
