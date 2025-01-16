@@ -804,6 +804,68 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00ea9e85301a14f4ba61fd68f312f390, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &212693989
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1434106675}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: e70f0caf158a1394a958a21fb2e13f17, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.16408645
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e70f0caf158a1394a958a21fb2e13f17, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.12085895
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e70f0caf158a1394a958a21fb2e13f17, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.14590548
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e70f0caf158a1394a958a21fb2e13f17, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071067
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e70f0caf158a1394a958a21fb2e13f17, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e70f0caf158a1394a958a21fb2e13f17, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e70f0caf158a1394a958a21fb2e13f17, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e70f0caf158a1394a958a21fb2e13f17, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e70f0caf158a1394a958a21fb2e13f17, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e70f0caf158a1394a958a21fb2e13f17, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e70f0caf158a1394a958a21fb2e13f17, type: 3}
+      propertyPath: m_Name
+      value: zaotai2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e70f0caf158a1394a958a21fb2e13f17, type: 3}
+--- !u!4 &212693990 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e70f0caf158a1394a958a21fb2e13f17, type: 3}
+  m_PrefabInstance: {fileID: 212693989}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &214619290
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5537,6 +5599,7 @@ Transform:
   - {fileID: 578607241}
   - {fileID: 840430412}
   - {fileID: 1734800615}
+  - {fileID: 212693990}
   - {fileID: 1544965609}
   - {fileID: 774507633}
   - {fileID: 1105553616}
@@ -6888,6 +6951,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fcce1be958321247ab0c296fc0170d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initDamage: 0
   skillList: []
   hp: 0
   maxHp: 100
