@@ -35,15 +35,13 @@ public class PlayerModel : Character,IDataPersistence
             skill.minDamage = skillList[index].minDamage;
             skill.maxDamage = skillList[index].maxDamage;
             skill.destructive = skillList[index].destructive;
-            
+
             skill.effects = new List<Effect>(skillList[index].effects);
             skillList[index] = skill;
         }
         base.attack(target, index);
     }
-    
-    
-    
+
     public void SaveData(ref GameData gameData)
     {
         gameData.playerPos = transform.position;

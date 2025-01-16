@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class AttackDetection : MonoBehaviour
 {
-
+<<<<<<< HEAD
+    
+=======
+>>>>>>> 1690cbe1b5c06addc5a5374621cdb3d7d1c0f9c0
     [Header("攻击方式序号")]
     public int index;
     public float attackInterval; // 攻击间隔时间（秒）

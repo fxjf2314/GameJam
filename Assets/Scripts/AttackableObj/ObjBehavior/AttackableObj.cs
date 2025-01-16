@@ -6,7 +6,9 @@ using UnityEngine;
 
 public abstract class AttackableObj: MonoBehaviour
 {
+
     public int initDamage;
+
     public List<Skill> skillList;
     public virtual void attack(Character target, int index)
     {
@@ -14,7 +16,10 @@ public abstract class AttackableObj: MonoBehaviour
         damage.damageAmount = UnityEngine.Random.Range(skillList[index].minDamage, skillList[index].maxDamage + 1);
         skillList[index] = damage;
         int damageAmount = CalculateDamage(target, index);
+
         target.ApplyDamage(damageAmount + initDamage, skillList[index].damageType);
+
+        
     }
     private int CalculateDamage(Character target, int index)
     {
