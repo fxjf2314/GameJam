@@ -63,6 +63,7 @@ public class UIGameStopPanelController : MonoBehaviour
         GotoTitleBtn.onClick.AddListener(() =>
         {
             SceneManager.LoadScene("GameStartUI");
+            Time.timeScale = 1;
         });
     }
 }
