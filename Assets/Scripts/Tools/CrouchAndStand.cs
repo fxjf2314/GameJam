@@ -28,15 +28,14 @@ public static class CrouchAndStand
     {
         Vector3 newCcCenter = cc.center;
         float currentCrouchTime = 0; // 记录已经蹲下的时间
-        float crouchSpeed = 1f / crouchTime; // 计算每秒的插值进度
-        while (cc.center != ccFinalCenter)
+        while (currentCrouchTime <= 1)
         {
-            currentCrouchTime += Time.deltaTime; // 更新蹲下的时间
-            float t = currentCrouchTime * crouchSpeed; // 计算当前的插值进度
+            currentCrouchTime += Time.deltaTime/crouchTime; // 更新蹲下的时间
+                                                            // 
                                                        //newCamPos.y = Mathf.Lerp(camOriginPos.y, camFinalPos.y, t);
-            newCcCenter.y = Mathf.Lerp(cc.center.y, ccFinalCenter.y, t);
-            cc.radius = Mathf.Lerp(cc.radius, ccFinalRadius, t);
-            cc.height = Mathf.Lerp(cc.height, ccFinalHeight, t);
+            newCcCenter.y = Mathf.Lerp(cc.center.y, ccFinalCenter.y, currentCrouchTime);
+            cc.radius = Mathf.Lerp(cc.radius, ccFinalRadius, currentCrouchTime);
+            cc.height = Mathf.Lerp(cc.height, ccFinalHeight, currentCrouchTime);
             //更新center和cam位置
             cc.center = newCcCenter;
             //mainCam.transform.localPosition = newCamPos;

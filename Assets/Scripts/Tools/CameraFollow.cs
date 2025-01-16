@@ -24,7 +24,5 @@ public class CameraFollow : MonoBehaviour
     private void FixedUpdate()
     {
         followPoint.position = player.position;
-
-
     }
 }
