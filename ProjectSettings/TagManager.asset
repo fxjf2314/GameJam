@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Monster
+  - Attack
+  - LootItem
   layers:
   - Default
   - TransparentFX

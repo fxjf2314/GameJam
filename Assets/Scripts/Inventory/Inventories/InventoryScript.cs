@@ -60,6 +60,7 @@ public class InventoryScript: MonoBehaviour
         bag.Initialize(20);
         //bag.InitialDes();
         bag.Use();
+        
     }
 
     private void Update()
@@ -87,6 +88,7 @@ public class InventoryScript: MonoBehaviour
             AddItem((Armor)Instantiate(items[3]));
             AddItem((Armor)Instantiate(items[4]));
             AddItem((Armor)Instantiate(items[5]));
+            AddItem((Armor)Instantiate(items[6]));
         }
     }
 

@@ -8,7 +8,8 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    private Scrollbar scrollbar;
+    private Scrollbar horiScrollbar;
+    private Scrollbar vertiScrollbar;
     
     private static UIManager instance;
 
@@ -38,7 +39,8 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     { 
-        scrollbar = GameObject.Find("FridgeScrollbar").GetComponent<Scrollbar>();
+        horiScrollbar = GameObject.Find("FridgeHoriScrollbar").GetComponent<Scrollbar>();
+        vertiScrollbar = GameObject.Find("FridgeVertiScrollbar").GetComponent<Scrollbar>();
         mask = GameObject.Find("Mask").GetComponent<Image>();
         
 
@@ -59,16 +61,19 @@ public class UIManager : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.G))
         {
-            scrollbar.value = 1;
+            //mask.color.a = 1;
+            horiScrollbar.value = 1;
+            vertiScrollbar.value = 0;
             //scrollbar.interactable = scrollbar.interactable == false ? true : false;
             mask.enabled = mask.enabled == true ? false : true;
-            uiFridge.OpenClose();
+            UIFridge.MyInstance.OpenClose();
             bagButton.Bag.MyBagScript.OpenClose();
         }
         if (Input.GetKeyDown(KeyCode.C))
         {
-            
-            uiFridge.OpenClose();
+            //bagButton.Bag.MyBagScript.Close();
+               
+            UIFridge.MyInstance.OpenClose();
             TalentTree.SetActive(TalentTree.activeSelf == true ? false : true);
 
         }
@@ -126,4 +131,6 @@ public class UIManager : MonoBehaviour
 
         tooltip.SetActive(false);
     }
+
+
 }

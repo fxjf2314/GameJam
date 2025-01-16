@@ -5,8 +5,21 @@ using UnityEngine;
 
 public class TalentTree : MonoBehaviour
 {
+    private static TalentTree instance;
+    public static TalentTree MyInstance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = FindObjectOfType<TalentTree>();
+            }
+            return instance;
+        }
+    }
+
     private int points = 9;
-    
+
     [SerializeField]
     private Talent[] talents;
 
@@ -32,10 +45,12 @@ public class TalentTree : MonoBehaviour
     }
 
     public void TryUseTalent(Talent talent)
-    { 
-        if(MyPoints > 0 && talent.Click())
+    {
+        
+        if(MyPoints > 0 && talent.Clickable())
         {
-            MyPoints--;
+
+            return;
         }
     }
 

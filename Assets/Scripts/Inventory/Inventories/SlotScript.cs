@@ -125,8 +125,31 @@ public class SlotScript : MonoBehaviour,IPointerClickHandler,IClickable,IPointer
         {
             if(!IsEmpty && InventoryScript.MyInstance.MyFromSlot == null)
             {
+                if(HandScript.MyInstance.MyMoveable != null)
+                {
+                    if(HandScript.MyInstance.MyMoveable is Armor)
+                    {
+                        if(MyItem is Armor && (MyItem as Armor).MyArmorType == (HandScript.MyInstance.MyMoveable as Armor).MyArmorType)
+                        {
+                            (MyItem as Armor).Equip();
+                            HandScript.MyInstance.Drop();
+                        }
+                    }
+                }
+                
                 HandScript.MyInstance.TakeMoveable(MyItem as IMoveable);
                 InventoryScript.MyInstance.MyFromSlot = this;
+            }
+            else if(InventoryScript.MyInstance.MyFromSlot == null && IsEmpty)
+            {
+                if(HandScript.MyInstance.MyMoveable is Armor)
+                {
+                    Armor armor = (Armor)HandScript.MyInstance.MyMoveable;
+                    AddItem(armor);
+                    UIFridge.MyInstance.MySelectedButton.DequipArmor();
+                    HandScript.MyInstance.Drop();
+                }
+                
             }
             else if(InventoryScript.MyInstance.MyFromSlot != null)
             {
@@ -153,6 +176,10 @@ public class SlotScript : MonoBehaviour,IPointerClickHandler,IClickable,IPointer
         {
             (MyItem as IUseable).Use();
         }
+        /*else if(MyItem is Armor)
+        {
+            (MyItem as Armor).Equip();
+        }*/
     }
 
     public bool StackItem(Item item)

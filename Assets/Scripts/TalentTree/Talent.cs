@@ -21,11 +21,22 @@ public class Talent : MonoBehaviour
     private bool unlocked;
 
     [SerializeField]
+    private string title;
+
+    public int addPower;
+
+    public int addKnockDownRate;
+
+    public bool Click;
+
+    [SerializeField]
     private Talent[] toUnlock;
+
+    public string MyTitle { get => title; set => title = value; }
 
     private void Awake()
     {
-        sprite = GetComponentInChildren<Button>();
+        sprite = GetComponent<Button>();
         countText.text = $"{currentCount}/{maxCount}";
         if (unlocked)
         {
@@ -33,28 +44,53 @@ public class Talent : MonoBehaviour
         }
     }
 
-    public bool Click()
+    public bool Clickable()
     {
-        if(currentCount < maxCount && unlocked)
+        //isPress = false;
+        TipsPanel.MyInstance.Open(OnConfirm, OnCancel,this);
+        //TipsPanel.MyInstance.detailTalentDes.text = description;
+        return Click;
+    }
+
+    /*private IEnumerator WaitForIsPress()
+    {
+        yield return TipsPanel.MyInstance.WaitForButtonPress();
+
+        isPress = true;
+    }*/
+
+    private void OnConfirm()
+    {
+        //isConfirm = true;
+        if (currentCount < maxCount && unlocked)
         {
             currentCount++;
             countText.text = $"{currentCount}/{maxCount}";
 
-            if(currentCount == maxCount)
-            { 
-                if(toUnlock.Length > 0)
+            if (currentCount == maxCount)
+            {
+                if (toUnlock.Length > 0)
                 {
-                    foreach(Talent t in toUnlock)
+                    foreach (Talent t in toUnlock)
                     {
                         t.Unlock();
                     }
                 }
             }
-            return true;
+            Click = true;
+            TalentTree.MyInstance.MyPoints--;
+            PlayerModel.Instance.initDamage += addPower;
+            PlayerModel.Instance.KnockDownRate += addKnockDownRate;
         }
 
-        return false;
+        Click = false;
     }
+
+    private void OnCancel()
+    {
+        Click = false;
+    }
+
 
     public void Lock()
     {

@@ -13,6 +13,8 @@ public class BagScript: MonoBehaviour
 
     private List<SlotScript> slots = new List<SlotScript>();
 
+    private Image mask;
+
     public bool IsOpen
     {
         get
@@ -25,11 +27,8 @@ public class BagScript: MonoBehaviour
     
     private void Awake()
     {
+        mask = GameObject.Find("Mask").GetComponent<Image>();
         canvasGroup = GetComponent<CanvasGroup>();
-
-        
-
-        
         
     }
 
@@ -51,6 +50,7 @@ public class BagScript: MonoBehaviour
         canvasGroup.blocksRaycasts = canvasGroup.blocksRaycasts == true ? false : true;
     }
 
+    
     
 
     public bool AddItem(Item item)
