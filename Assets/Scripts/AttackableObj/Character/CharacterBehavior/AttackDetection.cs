@@ -21,8 +21,11 @@ public class AttackDetection : MonoBehaviour
         if (other.CompareTag("Player") || other.CompareTag("Monster"))
         {
             {
-                for (int i = 0; i < thisAttackableObj.skillList[index].effects.Count; i++)
-                    StartCoroutine(EffectCooldown(thisAttackableObj.skillList[index].effects[i]));
+                if (thisAttackableObj.skillList[index].effects != null)
+                {
+                    for (int i = 0; i < thisAttackableObj.skillList[index].effects.Count; i++)
+                        StartCoroutine(EffectCooldown(thisAttackableObj.skillList[index].effects[i]));
+                }
             }
         }
     }
@@ -48,8 +51,11 @@ public class AttackDetection : MonoBehaviour
     {
         if (other.CompareTag("Player") || other.CompareTag("Monster"))
         {
-            for (int i = 0; i < thisAttackableObj.skillList[index].effects.Count; i++)
-                StopCoroutine(EffectCooldown(thisAttackableObj.skillList[index].effects[i]));
+            if (thisAttackableObj.skillList[index].effects != null)
+            {
+                for (int i = 0; i < thisAttackableObj.skillList[index].effects.Count; i++)
+                    StopCoroutine(EffectCooldown(thisAttackableObj.skillList[index].effects[i]));
+            }
         }
     }
     public IEnumerator EffectCooldown(Effect effect)

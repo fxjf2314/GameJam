@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/GameStartUI.unity
     guid: 77909c834a8f6e146aa9fd522862a4d5
   - enabled: 1
-    path: Assets/Scenes/Game.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+    path: Assets/Scenes/TeachingLevel.unity
+    guid: f1f7879f04beb6a44aaabd9fdd24a28e
+  - enabled: 1
+    path: Assets/Scenes/RealGameLevel1.unity
+    guid: 90423fd0ac05eda4599329dd55662d80
   m_configObjects: {}
