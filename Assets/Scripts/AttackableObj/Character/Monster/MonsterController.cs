@@ -21,7 +21,10 @@ public class MonsterController : Character
     private void Update()
     {
         //∑¢ÀÕ“∆∂Ø÷∏¡Ó
-        MoveToPlayer();
+        if (gameObject.name != "boss")
+        {
+            MoveToPlayer();
+        }
     }
     void MoveToPlayer()
     {

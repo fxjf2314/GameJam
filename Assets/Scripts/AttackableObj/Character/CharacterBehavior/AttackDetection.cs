@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class AttackDetection : MonoBehaviour
 {
     [Header("¹¥»÷·½Ê½ÐòºÅ")]
@@ -15,9 +14,10 @@ public class AttackDetection : MonoBehaviour
     {
         thisAttackableObj = transform.parent.GetComponent<AttackableObj>();
     }
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") || other.CompareTag("Monster"))
+        if (other.CompareTag("Player") || other.CompareTag("Monster")) 
         {
             {
                 for (int i = 0; i < thisAttackableObj.skillList[index].effects.Count; i++)
@@ -27,20 +27,26 @@ public class AttackDetection : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Player")|| other.CompareTag("Monster"))
-        {
-            timer += Time.deltaTime;
-            if (timer >= attackInterval)
+            if (other.CompareTag("Player") || other.CompareTag("Monster"))
             {
-                if (thisAttackableObj.gameObject.CompareTag("Player")) (thisAttackableObj as PlayerModel).attack(other.GetComponent<Character>(), index);
-                else thisAttackableObj.attack(other.GetComponent<Character>(), index);
-                thisAttackableObj.Effect(index);
-                other.GetComponent<Character>().isAlive();
-                ChangeState();
-                Invoke("ChangeState", attackRecovery);
-                timer = 0.0f;
+                timer += Time.deltaTime;
+                if (timer >= attackInterval)
+                {
+                    if (thisAttackableObj.gameObject.CompareTag("Player"))
+                    {
+                        (thisAttackableObj as PlayerModel).attack(other.GetComponent<Character>(), index);
+                    }
+                    else
+                    {
+                        thisAttackableObj.attack(other.GetComponent<Character>(), index);
+                    }
+                    thisAttackableObj.Effect(index);
+                    other.GetComponent<Character>().isAlive();
+                    ChangeState();
+                    Invoke("ChangeState", attackRecovery);
+                    timer = 0.0f;
+                }
             }
-        }
     }
     private void OnTriggerExit(Collider other)
     {

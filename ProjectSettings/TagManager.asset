@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Monster
   - Attack
+  - Fragile
+  - Morden
+  - Hard
+  - pro gaff
   layers:
   - Default
   - TransparentFX

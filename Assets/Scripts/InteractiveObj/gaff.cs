@@ -15,7 +15,13 @@ public class gaff : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (others != null) 
+        {
+            if (others.name == "Player"&& others.hp < 0)
+            {
+                Invoke("Destroyplayer", 0.1f);
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -51,5 +57,10 @@ public class gaff : MonoBehaviour
             others.hp -= 5;
             CancelInvoke("hpdecrease");
         }
+    }
+
+    void Destroyplayer()
+    {
+        Destroy(GameObject.Find("Player"));
     }
 }
