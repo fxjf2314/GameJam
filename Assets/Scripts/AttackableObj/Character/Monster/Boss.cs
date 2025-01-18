@@ -18,6 +18,8 @@ public class Boss : MonoBehaviour
     GameObject gaff3;
     GameObject boss;
     GameObject bosshpbar;
+    GameObject bossdeath;
+    GameObject bossdeathparticle;
 
    // Rigidbody bossrb;
     public int a = 0;//×´Ì¬Á¿
@@ -43,6 +45,10 @@ public class Boss : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        bossdeathparticle = GameObject.Find("bossdeathparticle");
+        bossdeathparticle.SetActive(false);
+        bossdeath = GameObject.Find("bossdeath");
+        bossdeath.SetActive(false);
         ifreturnani = false;
         ifhpstart = false;
         bosshpbar = GameObject.Find("Bosshpbar");
@@ -176,7 +182,17 @@ public class Boss : MonoBehaviour
 
     private void destroyboss()
     {
-        Destroy(gameObject);
+        bossdeath.SetActive(true);
+        gameObject.SetActive(false);
+        bossdeathparticle.SetActive(true);
+        Invoke("deathparticle", 1);
+
+    }
+
+    void deathparticle()
+    {
+        
+        bossdeathparticle.SetActive(false);
     }
 
     void bosshpdecrease()
