@@ -35,6 +35,7 @@ public class ViewChangeTrigger : MonoBehaviour
                 yield return null;
             }
             PlayerController.Instance.playerCanMove = true;
+            Destroy(gameObject);
         }
     }
 }

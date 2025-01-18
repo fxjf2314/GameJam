@@ -9,24 +9,25 @@ public class AttackDetection : MonoBehaviour
     public int index;
     public float attackInterval; // 攻击间隔时间（秒）
     public float attackRecovery; // 攻击后摇时间（秒）
-    private float timer = 0.0f;
-    private AttackableObj thisAttackableObj;
+    protected float timer = 0.0f;
+    protected AttackableObj thisAttackableObj;
 
-    private void Start()
+    protected virtual void Start()
     {
         thisAttackableObj = transform.parent.GetComponent<AttackableObj>();
     }
-    private void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player") || other.CompareTag("Monster"))
         {
             {
+                //print(thisAttackableObj.gameObject.name);
                 for (int i = 0; i < thisAttackableObj.skillList[index].effects.Count; i++)
                     StartCoroutine(EffectCooldown(thisAttackableObj.skillList[index].effects[i]));
             }
         }
     }
-    private void OnTriggerStay(Collider other)
+    protected virtual void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player")|| other.CompareTag("Monster"))
         {
@@ -43,7 +44,7 @@ public class AttackDetection : MonoBehaviour
             }
         }
     }
-    private void OnTriggerExit(Collider other)
+    protected virtual void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player") || other.CompareTag("Monster"))
         {
@@ -57,7 +58,7 @@ public class AttackDetection : MonoBehaviour
         yield return new WaitForSeconds(effect.frequency);
         effect.isCoolingDown = false;
     }
-    public void ChangeState()
+    protected virtual void ChangeState()
     {
         if (gameObject.transform.parent.CompareTag("Player"))
         {
