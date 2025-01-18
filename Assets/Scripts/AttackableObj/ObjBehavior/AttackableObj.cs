@@ -10,13 +10,14 @@ public abstract class AttackableObj: MonoBehaviour
     public int initDamage;
 
     public List<Skill> skillList;
+
+    public bool isRecovering;
     public virtual void attack(Character target, int index)
     {
         Skill damage = skillList[index];
         damage.damageAmount = UnityEngine.Random.Range(skillList[index].minDamage, skillList[index].maxDamage + 1);
         skillList[index] = damage;
         int damageAmount = CalculateDamage(target, index);
-
         target.ApplyDamage(damageAmount + initDamage, skillList[index].damageType);
 
         
