@@ -10,6 +10,7 @@ public class DataPersistenceManager : MonoBehaviour
     public static bool isExist = false;
     public static DataPersistenceManager Instance { get; private set; }
     GameData gameData;
+    public GameData GameData { get { return gameData; } }
     //存储实现了接口的类
     List<IDataPersistence> dataPersistenceObjs;
 
@@ -27,15 +28,11 @@ public class DataPersistenceManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        gameData = SaveTool.Load<GameData>(SaveTool.File_Name_01);
         //if(Instance != null)
         //{
         //    Debug.LogError("当前场景有多个数据存储管理器");
         //}
-    }
-
-    private void Start()
-    {
-        dataPersistenceObjs = FindAllDataPersistenceObjs();
     }
 
     public void NewGame()

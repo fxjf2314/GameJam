@@ -57,8 +57,8 @@ namespace QFramework.Example
             catch(System.Exception exception)
             {
 #if UNITY_EDITOR
-                Debug.LogError(exception);
-                Debug.LogError("Failed to load file");
+                Debug.LogWarning(exception);
+                Debug.LogWarning("Failed to load file");
                 return default;
 #endif
             }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerModel : Character,IDataPersistence
@@ -22,8 +23,10 @@ public class PlayerModel : Character,IDataPersistence
         }
     }
 
-    public int maxHp = 100;
-        [Header("击倒率%")]
+    //生命值和血条
+    public int maxHp = 8;
+
+    [Header("击倒率%")]
     public int KnockDownRate;
     public override void attack(Character target, int index)
     {
@@ -35,11 +38,13 @@ public class PlayerModel : Character,IDataPersistence
             skill.minDamage = skillList[index].minDamage;
             skill.maxDamage = skillList[index].maxDamage;
             skill.destructive = skillList[index].destructive;
+
             skill.effects = new List<Effect>(skillList[index].effects);
             skillList[index] = skill;
         }
         base.attack(target, index);
     }
+
     public void SaveData(ref GameData gameData)
     {
         gameData.playerPos = transform.position;

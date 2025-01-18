@@ -67,8 +67,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u56DE\u5230\u6807\u9898"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 223cea93751c5e94f9f4be02dd023edd, type: 2}
-  m_sharedMaterial: {fileID: 7561750412153749846, guid: 223cea93751c5e94f9f4be02dd023edd, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 052a5569f7e53054e845dba0c3401fc6, type: 2}
+  m_sharedMaterial: {fileID: -7160592800635982586, guid: 052a5569f7e53054e845dba0c3401fc6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -146,7 +146,6 @@ GameObject:
   - component: {fileID: 6900098903359591356}
   - component: {fileID: 2730461284009818101}
   - component: {fileID: 8487837144010057119}
-  - component: {fileID: 8723598454542864731}
   m_Layer: 0
   m_Name: GotoTitleBtn
   m_TagString: Untagged
@@ -256,22 +255,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &8723598454542864731
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 557732620791150744}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d51f3a7c41ab0346b49ae50d456bece, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MarkType: 0
-  CustomComponentName: SettingBtn
-  CustomComment: 
-  mComponentName: 
 --- !u!1 &1382339612345480361
 GameObject:
   m_ObjectHideFlags: 0
@@ -339,8 +322,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u4FDD\u5B58\u6E38\u620F"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 223cea93751c5e94f9f4be02dd023edd, type: 2}
-  m_sharedMaterial: {fileID: 7561750412153749846, guid: 223cea93751c5e94f9f4be02dd023edd, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 052a5569f7e53054e845dba0c3401fc6, type: 2}
+  m_sharedMaterial: {fileID: -7160592800635982586, guid: 052a5569f7e53054e845dba0c3401fc6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -415,7 +398,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1182954502071487399}
-  - component: {fileID: -704843492812429455}
   - component: {fileID: 1773148799222373443}
   - component: {fileID: 6591699425526566878}
   m_Layer: 0
@@ -424,7 +406,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1182954502071487399
 RectTransform:
   m_ObjectHideFlags: 0
@@ -445,19 +427,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &-704843492812429455
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2833336400286297642}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a91870ec3733f148938ecc31c98c021, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  StopWindow: {fileID: 7254795015271179465}
 --- !u!222 &1773148799222373443
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -507,7 +476,6 @@ GameObject:
   - component: {fileID: 149760195739023161}
   - component: {fileID: 6741906910966434414}
   - component: {fileID: 3071843856455300708}
-  - component: {fileID: 7254795015271179465}
   m_Layer: 0
   m_Name: StopWindow
   m_TagString: Untagged
@@ -575,21 +543,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &7254795015271179465
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5159931953922433842}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ae86e77546e6704bbfeec7d6ca4e53f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GotoTitleBtn: {fileID: 8487837144010057119}
-  BackToGameBtn: {fileID: 5943322017261267746}
-  SettingBtn: {fileID: 7843212087987550648}
 --- !u!1 &6949874674759468753
 GameObject:
   m_ObjectHideFlags: 0
@@ -602,7 +555,6 @@ GameObject:
   - component: {fileID: 610988820945635272}
   - component: {fileID: 544431064010302321}
   - component: {fileID: 5943322017261267746}
-  - component: {fileID: 5678184225144101620}
   m_Layer: 0
   m_Name: BackToGameBtn
   m_TagString: Untagged
@@ -712,22 +664,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &5678184225144101620
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6949874674759468753}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d51f3a7c41ab0346b49ae50d456bece, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MarkType: 0
-  CustomComponentName: SettingBtn
-  CustomComment: 
-  mComponentName: UnityEngine.UI.Button
 --- !u!1 &7588593354850528192
 GameObject:
   m_ObjectHideFlags: 0
@@ -795,8 +731,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u56DE\u5230\u6E38\u620F"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 223cea93751c5e94f9f4be02dd023edd, type: 2}
-  m_sharedMaterial: {fileID: 7561750412153749846, guid: 223cea93751c5e94f9f4be02dd023edd, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 052a5569f7e53054e845dba0c3401fc6, type: 2}
+  m_sharedMaterial: {fileID: -7160592800635982586, guid: 052a5569f7e53054e845dba0c3401fc6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -874,7 +810,6 @@ GameObject:
   - component: {fileID: 3658259693529645460}
   - component: {fileID: 1362168999771983280}
   - component: {fileID: 7843212087987550648}
-  - component: {fileID: 7739831855664373760}
   m_Layer: 0
   m_Name: SettingBtn
   m_TagString: Untagged
@@ -984,19 +919,3 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &7739831855664373760
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8606623075349260531}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d51f3a7c41ab0346b49ae50d456bece, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MarkType: 0
-  CustomComponentName: SettingBtn
-  CustomComment: 
-  mComponentName: UnityEngine.UI.Button
