@@ -26,6 +26,11 @@ public class PlayerModel : Character,IDataPersistence
     //生命值和血条
     public int maxHp = 8;
 
+    private void Start()
+    {
+        hp = maxHp;
+    }
+
     [Header("击倒率%")]
     public int KnockDownRate;
     public override void attack(Character target, int index)

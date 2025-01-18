@@ -23,6 +23,9 @@ public class MonsterController : Character
     [SerializeField]
     float moveSpeed = 10;
 
+    //存储跳跃协程，只开一个
+    Coroutine monsterJump;
+
     protected virtual void Start()
     {
         player = GameObject.Find("Player").transform;
@@ -32,7 +35,10 @@ public class MonsterController : Character
     public virtual void Update()
     {
         //发送移动指令
-        MoveToPlayer();
+        if (gameObject.name != "boss")
+        {
+            MoveToPlayer();
+        }
     }
     void MoveToPlayer()
     {
@@ -42,7 +48,10 @@ public class MonsterController : Character
             if (Vector3.Distance(player.position, transform.position) < maxDis && Vector3.Distance(player.position, transform.position) > minDis)
             {
                 HorizonMove();
-                StartCoroutine(VerticalMove(jumpInterval));
+                if(monsterJump == null)
+                {
+                    monsterJump = StartCoroutine(VerticalMove(jumpInterval));
+                }
             }
             else
             {
@@ -57,10 +66,10 @@ public class MonsterController : Character
         Vector3 subPos = player.position - transform.position;
         if (PlayerController.Instance.isMoveOnZ)
         {
-            if (transform.forward.z * subPos.z < 0)
+            if (transform.forward.z * subPos.z < 0 && Vector3.Distance(transform.position,player.position) > 10 )
             {
                 //转身面向玩家
-                transform.Rotate(Vector3.up, 180);
+                transform.RotateAround(transform.position, Vector3.up, 180);
             }
             if (transform.position.z > player.position.z)
             {
@@ -73,7 +82,7 @@ public class MonsterController : Character
         }
         else
         {
-            if (transform.forward.x * subPos.x < 0)
+            if (transform.forward.x * subPos.x < 0 && Vector3.Distance(transform.position, player.position) > 10)
             {
                 //转身面向玩家
                 transform.Rotate(Vector3.up, 180);
@@ -91,11 +100,9 @@ public class MonsterController : Character
 
     IEnumerator VerticalMove(float intreval)
     {
-        while (true)
-        {
-            yield return new WaitForSeconds(intreval);
-            Debug.Log("11");
-            monsterRb.AddForce(Vector3.up * jumpSpeed);
-        }
+        yield return new WaitForSeconds(intreval);
+        //Debug.Log("11");
+        monsterRb.AddForce(Vector3.up * jumpSpeed *10);
+        monsterJump = null;
     }
 }

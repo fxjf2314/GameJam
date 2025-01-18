@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEngine;
 
 public class KnockDown : MonoBehaviour
@@ -7,7 +8,12 @@ public class KnockDown : MonoBehaviour
     public float duration;
     public CooldownDuration cooldownDuration;
     [SerializeField]
-    private Animator characterAnimator;
+    protected Animator characterAnimator;
+
+    private void Start()
+    {
+        characterAnimator = GetComponent<Animator>();
+    }
 
     private void OnEnable()
     {
@@ -23,8 +29,9 @@ public class KnockDown : MonoBehaviour
         characterAnimator.SetLayerWeight(0, 1);
         characterAnimator.Play("zou",1);
     }
-    public void SetState(bool state)
+    public virtual void SetState(bool state)
     {
+
         if (gameObject.CompareTag("Player"))
         {
             gameObject.GetComponent<PlayerController>().enabled = state;

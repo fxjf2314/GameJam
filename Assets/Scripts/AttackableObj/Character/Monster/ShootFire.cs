@@ -11,7 +11,7 @@ public class ShootFire : AttackDetection
 
     public int MyTimeCounter { get => timeCounter; set => timeCounter = value; }
 
-    public override void OnTriggerStay(Collider other)
+    protected override void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player") || other.CompareTag("Monster"))
         {
@@ -56,7 +56,7 @@ public class ShootFire : AttackDetection
         
     }
 
-    public override void OnTriggerExit(Collider other)
+    protected override void OnTriggerExit(Collider other)
     {
         if(other.transform.CompareTag("Player"))
         {
@@ -66,11 +66,14 @@ public class ShootFire : AttackDetection
     }
 
 
-    public override void ChangeState()
+    public override void SetStateTrue()
     {
-        gameObject.transform.parent.GetComponent<ChiliController>().enabled = !gameObject.transform.parent.GetComponent<ChiliController>().enabled;
+        gameObject.transform.parent.GetComponent<ChiliController>().enabled = true;
         print(gameObject.transform.parent.name + gameObject.transform.parent.GetComponent<ChiliController>().enabled);
     }
-    
-    
+    public override void SetStateFalse()
+    {
+        gameObject.transform.parent.GetComponent<ChiliController>().enabled = false;
+        print(gameObject.transform.parent.name + gameObject.transform.parent.GetComponent<ChiliController>().enabled);
+    }
 }

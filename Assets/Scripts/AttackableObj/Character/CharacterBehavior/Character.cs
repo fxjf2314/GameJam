@@ -6,7 +6,7 @@ using UnityEngine;
 public abstract class Character: AttackableObj
 {
     [SerializeField]
-    private Animator characterAnimator;
+    protected Animator characterAnimator;
 
     [SerializeField]
     GameObject EXP;
@@ -30,6 +30,7 @@ public abstract class Character: AttackableObj
     }
     public void ApplyDamage(int amount, DamageType type)
     {
+        print(gameObject.name+"受到了"+ amount+"点伤害");
         hp -= amount;
         if(hp <= 0 && PlayerItemCheck.Instance.canDefense)
         {
@@ -52,7 +53,7 @@ public abstract class Character: AttackableObj
     }
     protected void KnockDown()
     {
-        if (!gameObject.GetComponent<KnockDown>().cooldownDuration.isCoolingDown)
+        if (gameObject.GetComponent<KnockDown>()&&!gameObject.GetComponent<KnockDown>().cooldownDuration.isCoolingDown)
         {
             ChiliKnockDown();
             characterAnimator.SetLayerWeight(1,1);
@@ -64,6 +65,7 @@ public abstract class Character: AttackableObj
 
     IEnumerator Death()
     {
+        KnockDown();
         characterAnimator.SetBool("Died", true);
 
         yield return new WaitForSeconds(deathTime);

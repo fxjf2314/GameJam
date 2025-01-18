@@ -6,7 +6,10 @@ TagManager:
   tags:
   - Monster
   - Attack
-  - LootItem
+  - Fragile
+  - Morden
+  - Hard
+  - pro gaff
   layers:
   - Default
   - TransparentFX

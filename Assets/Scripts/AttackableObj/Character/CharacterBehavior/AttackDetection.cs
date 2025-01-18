@@ -12,11 +12,12 @@ public class AttackDetection : MonoBehaviour
     protected float timer = 0.0f;
     protected AttackableObj thisAttackableObj;
 
-    private void Start()
+    protected virtual void Start()
     {
+        timer = attackInterval;
         thisAttackableObj = transform.parent.GetComponent<AttackableObj>();
     }
-    private void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player") || other.CompareTag("Monster"))
         {
@@ -29,25 +30,25 @@ public class AttackDetection : MonoBehaviour
             }
         }
     }
-    public virtual void OnTriggerStay(Collider other)
+    protected virtual void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Player")|| other.CompareTag("Monster"))
+        if (other.CompareTag("Player") || other.CompareTag("Monster"))
         {
             timer += Time.deltaTime;
-            if (timer >= attackInterval)
+            if (timer >= attackInterval&&!thisAttackableObj.isRecovering)
             {
                 if (thisAttackableObj.gameObject.CompareTag("Player")) (thisAttackableObj as PlayerModel).attack(other.GetComponent<Character>(), index);
                 else thisAttackableObj.attack(other.GetComponent<Character>(), index);
                 thisAttackableObj.Effect(index);
                 other.GetComponent<Character>().isAlive();
-                
-                ChangeState();
-                Invoke("ChangeState", attackRecovery);
+                SetStateFalse();
+                StartCoroutine(IsRecovering());
+                Invoke("SetStateTrue", attackRecovery);
                 timer = 0.0f;
             }
         }
     }
-    public virtual void OnTriggerExit(Collider other)
+    protected virtual void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player") || other.CompareTag("Monster"))
         {
@@ -64,17 +65,32 @@ public class AttackDetection : MonoBehaviour
         yield return new WaitForSeconds(effect.frequency);
         effect.isCoolingDown = false;
     }
-    public virtual void ChangeState()
+    public IEnumerator IsRecovering()
+    {
+        thisAttackableObj.isRecovering = true;
+        yield return new WaitForSeconds(attackRecovery);
+        thisAttackableObj.isRecovering = false;
+    }
+    public  virtual void SetStateTrue()
     {
         if (gameObject.transform.parent.CompareTag("Player"))
         {
-            gameObject.transform.parent.GetComponent<PlayerController>().enabled = !gameObject.transform.parent.GetComponent<PlayerController>().enabled;
-            print(gameObject.transform.parent.name+ gameObject.transform.parent.GetComponent<PlayerController>().enabled);
+            gameObject.transform.parent.GetComponent<PlayerController>().enabled = true ;
         }
         if (gameObject.transform.parent.CompareTag("Monster"))
         {
-            gameObject.transform.parent.GetComponent<MonsterController>().enabled = !gameObject.transform.parent.GetComponent<MonsterController>().enabled;
-            print(gameObject.transform.parent.name+ gameObject.transform.parent.GetComponent<MonsterController>().enabled);
+            gameObject.transform.parent.GetComponent<MonsterController>().enabled = true;
+        }
+    }
+    public virtual void SetStateFalse()
+    {
+        if (gameObject.transform.parent.CompareTag("Player"))
+        {
+            gameObject.transform.parent.GetComponent<PlayerController>().enabled = false;
+        }
+        if (gameObject.transform.parent.CompareTag("Monster"))
+        {
+            gameObject.transform.parent.GetComponent<MonsterController>().enabled = false;
         }
     }
 }
