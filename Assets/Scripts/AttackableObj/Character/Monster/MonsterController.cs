@@ -79,7 +79,7 @@ public class MonsterController : Character
         }
         else
         {
-            if (transform.forward.x * subPos.x < 0)
+            if (transform.forward.x * subPos.x < 0 && Vector3.Distance(transform.position, player.position) > 10)
             {
                 //转身面向玩家
                 transform.Rotate(Vector3.up, 180);

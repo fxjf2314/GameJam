@@ -48,6 +48,15 @@ public class ChickenLegAttack : AttackDetection
         
     }
 
+    public void Reset()
+    {
+        StopAllCoroutines();
+        beforeAtkCoroutine = null;
+        afterAtkCoroutine = null;
+        isCanAtk = false;
+        animator.SetBool("isAttack", false);
+    }
+
     IEnumerator BeforeAtk()
     {
         animator.SetBool("isAttack", true);
