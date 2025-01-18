@@ -66,6 +66,7 @@ public class PlayerController : MonoBehaviour
     //动画
     Animator animator;
 
+    
     private void Start()
     {
         //刚体
@@ -115,6 +116,7 @@ public class PlayerController : MonoBehaviour
     {
         //更新下蹲状态
         IsCrouch();
+        
     }
 
     void MoveAndJump()
@@ -282,6 +284,9 @@ public class PlayerController : MonoBehaviour
         }
         return true;
     }
+
+
+    
 }
     
 

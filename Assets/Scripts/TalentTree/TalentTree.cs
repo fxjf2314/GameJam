@@ -18,7 +18,7 @@ public class TalentTree : MonoBehaviour
         }
     }
 
-    private int points = 9;
+    public int points = 1;
 
     [SerializeField]
     private Talent[] talents;

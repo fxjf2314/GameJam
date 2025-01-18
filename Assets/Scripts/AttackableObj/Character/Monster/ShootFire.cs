@@ -36,7 +36,7 @@ public class ShootFire : AttackDetection
                 }
                 else
                 {
-                    Debug.Log("1111");
+                    //Debug.Log("1111");
                     Skill skill = new Skill();
                     skill.damageType = DamageType.SimpleDamage;
                     skill.minDamage = thisAttackableObj.skillList[index].minDamage;

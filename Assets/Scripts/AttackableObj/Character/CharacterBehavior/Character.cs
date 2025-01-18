@@ -8,10 +8,13 @@ public abstract class Character: AttackableObj
     [SerializeField]
     private Animator characterAnimator;
 
-    ChiliController chiliController;
+    [SerializeField]
+    GameObject EXP;
+
+
 
     [SerializeField]
-    private int deathTime;
+    private float deathTime;
 
     public int hp;
 
@@ -19,6 +22,7 @@ public abstract class Character: AttackableObj
     {
         if (hp <= 0)
         {
+            
             //StopCoroutine();
             StartCoroutine(Death());
 
@@ -27,6 +31,12 @@ public abstract class Character: AttackableObj
     public void ApplyDamage(int amount, DamageType type)
     {
         hp -= amount;
+        if(hp <= 0 && PlayerItemCheck.Instance.canDefense)
+        {
+            Debug.Log("Defense!");
+            hp += amount;
+            PlayerItemCheck.Instance.startPotatoCooling();
+        }
         switch (type)
         {
             case DamageType.SimpleDamage:
@@ -44,9 +54,10 @@ public abstract class Character: AttackableObj
     {
         if (!gameObject.GetComponent<KnockDown>().cooldownDuration.isCoolingDown)
         {
+            ChiliKnockDown();
             characterAnimator.SetLayerWeight(1,1);
             characterAnimator.SetBool("KnockDown",true);
-            characterAnimator.SetBool("KnockdownFinish", true);
+            characterAnimator.SetBool("KnockdownFinish", false);
             gameObject.GetComponent<KnockDown>().enabled = true;
         }
     }
@@ -56,7 +67,19 @@ public abstract class Character: AttackableObj
         characterAnimator.SetBool("Died", true);
 
         yield return new WaitForSeconds(deathTime);
-
+        if (gameObject.transform.CompareTag("Monster"))
+        {
+            Instantiate(EXP,gameObject.transform.position,Quaternion.identity);
+        }
         gameObject.SetActive(false);
+    }
+
+    private void ChiliKnockDown()
+    {
+        if(gameObject.GetComponent<ChiliController>() != null)
+        {
+            ChiliController chiliController = gameObject.GetComponent<ChiliController>();
+            chiliController.fire.SetActive(false);
+        }
     }
 }

@@ -4,16 +4,14 @@ using UnityEngine;
 
 public class ChiliController : MonsterController
 {
-    [SerializeField]
-    private GameObject fire;
+    
+    public GameObject fire;
 
     private Animator chiliAnimator;
 
     [SerializeField]
     private BoxCollider fireCollider;
-    private Vector3 originalSize;
-    private Vector3 targetSize;
-
+    
     bool isAttack;
 
     [SerializeField]
