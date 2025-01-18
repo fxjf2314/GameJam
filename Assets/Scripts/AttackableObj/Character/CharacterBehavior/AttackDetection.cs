@@ -9,8 +9,8 @@ public class AttackDetection : MonoBehaviour
     public int index;
     public float attackInterval; // 攻击间隔时间（秒）
     public float attackRecovery; // 攻击后摇时间（秒）
-    private float timer = 0.0f;
-    private AttackableObj thisAttackableObj;
+    protected float timer = 0.0f;
+    protected AttackableObj thisAttackableObj;
 
     private void Start()
     {
@@ -30,7 +30,7 @@ public class AttackDetection : MonoBehaviour
             }
         }
     }
-    private void OnTriggerStay(Collider other)
+    public virtual void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player") || other.CompareTag("Monster"))
         {
@@ -48,7 +48,7 @@ public class AttackDetection : MonoBehaviour
             }
         }
     }
-    private void OnTriggerExit(Collider other)
+    public virtual void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player") || other.CompareTag("Monster"))
         {
@@ -71,18 +71,18 @@ public class AttackDetection : MonoBehaviour
         yield return new WaitForSeconds(attackRecovery);
         thisAttackableObj.isRecovering = false;
     }
-    public void SetStateTrue()
+    public  virtual void SetStateTrue()
     {
         if (gameObject.transform.parent.CompareTag("Player"))
         {
-            gameObject.transform.parent.GetComponent<PlayerController>().enabled = true;
+            gameObject.transform.parent.GetComponent<PlayerController>().enabled = true ;
         }
         if (gameObject.transform.parent.CompareTag("Monster"))
         {
             gameObject.transform.parent.GetComponent<MonsterController>().enabled = true;
         }
     }
-    public void SetStateFalse()
+    public virtual void SetStateFalse()
     {
         if (gameObject.transform.parent.CompareTag("Player"))
         {

@@ -6,8 +6,8 @@ using UnityEngine;
 using UnityEngine.AI;
 public class MonsterController : Character
 {
-    Transform player;
-    Rigidbody monsterRb;
+    protected Transform player;
+    protected Rigidbody monsterRb;
     [Header("Ë÷µÐ°ë¾¶")][SerializeField]
     float maxDis;
     [Header("Ë÷µÐ°ë¾¶")]
@@ -23,13 +23,13 @@ public class MonsterController : Character
     [SerializeField]
     float moveSpeed = 10;
 
-    private void Start()
+    protected virtual void Start()
     {
         player = GameObject.Find("Player").transform;
         monsterRb = GetComponent<Rigidbody>();
     }
     
-    protected void Update()
+    public virtual void Update()
     {
         //·¢ËÍÒÆ¶¯Ö¸Áî
         MoveToPlayer();
@@ -94,7 +94,6 @@ public class MonsterController : Character
         while (true)
         {
             yield return new WaitForSeconds(intreval);
-            Debug.Log("11");
             monsterRb.AddForce(Vector3.up * jumpSpeed);
         }
     }

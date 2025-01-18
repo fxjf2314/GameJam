@@ -13,7 +13,7 @@ public class CollisionAttack : MonoBehaviour
     private void Start()
     {
         timer = attackInterval;
-        thisAttackableObj = GetComponent<AttackableObj>();
+        thisAttackableObj = gameObject.GetComponent<AttackableObj>();
     }
     private void Update()
     {
@@ -25,6 +25,7 @@ public class CollisionAttack : MonoBehaviour
         {
             if (timer >= attackInterval)
             {
+                print(timer);
                 if (thisAttackableObj.gameObject.CompareTag("Player")) (thisAttackableObj as PlayerModel).attack(collision.gameObject.GetComponent<Character>(), index);
                 else thisAttackableObj.attack(collision.gameObject.GetComponent<Character>(), index);
                 thisAttackableObj.Effect(index);
