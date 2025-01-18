@@ -19,6 +19,7 @@ public class KnockDown : MonoBehaviour
     }
     public void SetState(bool state)
     {
+
         if (gameObject.CompareTag("Player"))
         {
             gameObject.GetComponent<PlayerController>().enabled = state;

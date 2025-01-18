@@ -8,6 +8,6 @@ public class DeathEffect : MonoBehaviour
     public Transform parent;
     private void OnDisable()
     {
-        GameObject instantiatedObject = Instantiate(prefab,parent);
+        GameObject instantiatedObject = Instantiate(prefab,gameObject.transform.position,prefab.transform.rotation,parent);
     }
 }
