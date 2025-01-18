@@ -6,7 +6,7 @@ using UnityEngine;
 public abstract class Character: AttackableObj
 {
     [SerializeField]
-    private Animator characterAnimator;
+    protected Animator characterAnimator;
 
     ChiliController chiliController;
 
@@ -47,7 +47,7 @@ public abstract class Character: AttackableObj
         {
             characterAnimator.SetLayerWeight(1,1);
             characterAnimator.SetBool("KnockDown",true);
-            characterAnimator.SetBool("KnockdownFinish", true);
+            characterAnimator.SetBool("KnockdownFinish", false);
             gameObject.GetComponent<KnockDown>().enabled = true;
         }
     }
