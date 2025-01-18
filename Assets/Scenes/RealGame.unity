@@ -673,6 +673,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1ebae8c71d23c41449d7f7d8bf57edc3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 45356339}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1ebae8c71d23c41449d7f7d8bf57edc3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 45356340}
   m_SourcePrefab: {fileID: 100100000, guid: 1ebae8c71d23c41449d7f7d8bf57edc3, type: 3}
 --- !u!1 &45356331 stripped
 GameObject:
@@ -739,6 +742,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   duration: 3
   cooldownDuration: {fileID: 45356334}
+  characterAnimator: {fileID: 45356340}
 --- !u!136 &45356336
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -792,6 +796,9 @@ MonoBehaviour:
       KnockDownRate: 3
       frequency: 10
       isCoolingDown: 0
+  isRecovering: 0
+  characterAnimator: {fileID: 45356340}
+  deathTime: 0
   hp: 10
   maxHp: 10
   KnockDownRate: 50
@@ -839,6 +846,27 @@ MonoBehaviour:
   glideSpeed: 0
   glideFallingSpeed: 0
   isCanGlide: 0
+--- !u!95 &45356340
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 45356331}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 815550d3f0a75d344b7a2a3c93ee6718, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!4 &67396421 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 852db5a076f54c84f94ea1eb593c1b9b, type: 3}
@@ -8959,6 +8987,9 @@ MonoBehaviour:
     maxDamage: 3
     destructive: 3
     effects: []
+  isRecovering: 0
+  characterAnimator: {fileID: 1167713116}
+  deathTime: 0
   hp: 250
   maxDis: 0
   minDis: 0
@@ -9027,6 +9058,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   duration: 0
   cooldownDuration: {fileID: 1167713121}
+  characterAnimator: {fileID: 1167713116}
 --- !u!114 &1167713121
 MonoBehaviour:
   m_ObjectHideFlags: 0
