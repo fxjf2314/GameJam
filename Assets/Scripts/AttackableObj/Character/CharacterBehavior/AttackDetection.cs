@@ -21,9 +21,11 @@ public class AttackDetection : MonoBehaviour
         if (other.CompareTag("Player") || other.CompareTag("Monster"))
         {
             {
-                //print(thisAttackableObj.gameObject.name);
-                for (int i = 0; i < thisAttackableObj.skillList[index].effects.Count; i++)
-                    StartCoroutine(EffectCooldown(thisAttackableObj.skillList[index].effects[i]));
+                if (thisAttackableObj.skillList[index].effects != null)
+                {
+                    for (int i = 0; i < thisAttackableObj.skillList[index].effects.Count; i++)
+                        StartCoroutine(EffectCooldown(thisAttackableObj.skillList[index].effects[i]));
+                }
             }
         }
     }
@@ -38,6 +40,7 @@ public class AttackDetection : MonoBehaviour
                 else thisAttackableObj.attack(other.GetComponent<Character>(), index);
                 thisAttackableObj.Effect(index);
                 other.GetComponent<Character>().isAlive();
+                
                 ChangeState();
                 Invoke("ChangeState", attackRecovery);
                 timer = 0.0f;
@@ -48,8 +51,11 @@ public class AttackDetection : MonoBehaviour
     {
         if (other.CompareTag("Player") || other.CompareTag("Monster"))
         {
-            for (int i = 0; i < thisAttackableObj.skillList[index].effects.Count; i++)
-                StopCoroutine(EffectCooldown(thisAttackableObj.skillList[index].effects[i]));
+            if (thisAttackableObj.skillList[index].effects != null)
+            {
+                for (int i = 0; i < thisAttackableObj.skillList[index].effects.Count; i++)
+                    StopCoroutine(EffectCooldown(thisAttackableObj.skillList[index].effects[i]));
+            }
         }
     }
     public IEnumerator EffectCooldown(Effect effect)

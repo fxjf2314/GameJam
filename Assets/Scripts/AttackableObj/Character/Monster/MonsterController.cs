@@ -6,8 +6,8 @@ using UnityEngine;
 using UnityEngine.AI;
 public class MonsterController : Character
 {
-    Transform player;
-    Rigidbody monsterRb;
+    protected Transform player;
+    protected Rigidbody monsterRb;
     [Header("索敌半径")][SerializeField]
     float maxDis;
     [Header("索敌半径")]
@@ -26,13 +26,13 @@ public class MonsterController : Character
     //存储跳跃协程，只开一个
     Coroutine monsterJump;
 
-    private void Start()
+    protected virtual void Start()
     {
         player = GameObject.Find("Player").transform;
         monsterRb = GetComponent<Rigidbody>();
     }
     
-    protected void Update()
+    public virtual void Update()
     {
         //发送移动指令
         MoveToPlayer();
