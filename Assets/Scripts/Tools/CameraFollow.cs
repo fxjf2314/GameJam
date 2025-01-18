@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using System;
 
 public class CameraFollow : MonoBehaviour
 {
@@ -27,8 +28,6 @@ public class CameraFollow : MonoBehaviour
         // 创建一个空对象作为摄像机的跟随点
         followPoint = new GameObject("FollowPoint").transform;
         followPoint.position = player.position;
-
-        
     }
 
     private void FixedUpdate()
