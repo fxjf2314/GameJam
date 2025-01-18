@@ -31,7 +31,6 @@ public class ChickenLegAttack : AttackDetection
                 thisAttackableObj.attack(other.GetComponent<Character>(), index);
                 thisAttackableObj.Effect(index);
                 other.GetComponent<Character>().isAlive();
-                ChangeState();
                 Invoke("ChangeState", attackRecovery);
             }
         }
@@ -92,10 +91,6 @@ public class ChickenLegAttack : AttackDetection
         StartCoroutine(AfterAtk());
     }
 
-    protected override void ChangeState()
-    {
-        
-        base.ChangeState();
-    }
+    
 
 }

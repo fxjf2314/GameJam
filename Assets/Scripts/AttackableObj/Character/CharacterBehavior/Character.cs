@@ -26,6 +26,7 @@ public abstract class Character: AttackableObj
     }
     public void ApplyDamage(int amount, DamageType type)
     {
+        print(gameObject.name+"受到了"+ amount+"点伤害");
         hp -= amount;
         switch (type)
         {
@@ -42,7 +43,7 @@ public abstract class Character: AttackableObj
     }
     protected void KnockDown()
     {
-        if (!gameObject.GetComponent<KnockDown>().cooldownDuration.isCoolingDown)
+        if (gameObject.GetComponent<KnockDown>()&&!gameObject.GetComponent<KnockDown>().cooldownDuration.isCoolingDown)
         {
             characterAnimator.SetLayerWeight(1,1);
             characterAnimator.SetBool("KnockDown",true);
@@ -53,6 +54,7 @@ public abstract class Character: AttackableObj
 
     IEnumerator Death()
     {
+        KnockDown();
         characterAnimator.SetBool("Died", true);
 
         yield return new WaitForSeconds(deathTime);

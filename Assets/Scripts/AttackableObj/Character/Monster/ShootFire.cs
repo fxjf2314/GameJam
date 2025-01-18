@@ -66,11 +66,14 @@ public class ShootFire : AttackDetection
     }
 
 
-    protected override void ChangeState()
+    public override void SetStateTrue()
     {
-        gameObject.transform.parent.GetComponent<ChiliController>().enabled = !gameObject.transform.parent.GetComponent<ChiliController>().enabled;
+        gameObject.transform.parent.GetComponent<ChiliController>().enabled = true;
         print(gameObject.transform.parent.name + gameObject.transform.parent.GetComponent<ChiliController>().enabled);
     }
-    
-    
+    public override void SetStateFalse()
+    {
+        gameObject.transform.parent.GetComponent<ChiliController>().enabled = false;
+        print(gameObject.transform.parent.name + gameObject.transform.parent.GetComponent<ChiliController>().enabled);
+    }
 }
