@@ -23,6 +23,8 @@ public class UIFridge : MonoBehaviour
         }
     }
 
+    public int point;
+
     public int chickenMashroomCount;
 
     public int PotatoMashroomCount;

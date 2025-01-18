@@ -518,6 +518,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   armorType: 0
+  armor: {fileID: 0}
+  partnericon: {fileID: 0}
   armorIcon: {fileID: 173062282}
 --- !u!114 &63327599
 MonoBehaviour:
@@ -847,6 +849,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   armorType: 1
+  armor: {fileID: 0}
+  partnericon: {fileID: 0}
   armorIcon: {fileID: 1306207260}
 --- !u!114 &117560280
 MonoBehaviour:
@@ -1831,10 +1835,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e5df1ec2d5857d4b9b9e44fafab5565, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  head: {fileID: 63327598}
-  chest: {fileID: 698974302}
-  back: {fileID: 1331740188}
-  leg: {fileID: 117560279}
+  Armors:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  point: 0
+  chickenMashroomCount: 0
+  PotatoMashroomCount: 0
 --- !u!114 &280619902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2641,6 +2650,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   armorType: 4
+  armor: {fileID: 0}
+  partnericon: {fileID: 0}
   armorIcon: {fileID: 2071027957}
 --- !u!114 &507491492
 MonoBehaviour:
@@ -3254,6 +3265,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   armorType: 3
+  armor: {fileID: 0}
+  partnericon: {fileID: 0}
   armorIcon: {fileID: 1664350203}
 --- !u!114 &698974303
 MonoBehaviour:
@@ -3613,6 +3626,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8f0a4520f5adbe438b575d537570cfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  points: 1
   talents:
   - {fileID: 160446776}
   - {fileID: 234467938}
@@ -4041,7 +4055,7 @@ Transform:
   m_GameObject: {fileID: 940630910}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 6.71, y: 3.8505802, z: -2.5119996}
+  m_LocalPosition: {x: 6.7100005, y: 3.8505802, z: -14.610002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4435,8 +4449,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1530254415}
   m_HandleRect: {fileID: 1530254413}
   m_Direction: 0
-  m_Value: -0.000000018039023
-  m_Size: 0.36861265
+  m_Value: -0.000000090195144
+  m_Size: 0.36861274
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -5322,6 +5336,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   armorType: 2
+  armor: {fileID: 0}
+  partnericon: {fileID: 0}
   armorIcon: {fileID: 11306838}
 --- !u!114 &1331740189
 MonoBehaviour:
@@ -6436,7 +6452,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1ebae8c71d23c41449d7f7d8bf57edc3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.512
+      value: -14.61
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1ebae8c71d23c41449d7f7d8bf57edc3, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6591,6 +6607,7 @@ MonoBehaviour:
   glideSpeed: 0
   glideFallingSpeed: 0
   isCanGlide: 0
+  canDefense: 0
 --- !u!114 &1568072743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6613,6 +6630,7 @@ MonoBehaviour:
     effects: []
   isRecovering: 0
   characterAnimator: {fileID: 1568072747}
+  EXP: {fileID: 0}
   deathTime: 0
   hp: 8
   maxHp: 8
@@ -7933,7 +7951,7 @@ Transform:
   m_GameObject: {fileID: 1856957246}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 6.71, y: 3.8505802, z: -2.5119996}
+  m_LocalPosition: {x: 6.7100005, y: 3.8505802, z: -14.610002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8091,8 +8109,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 48011366}
   m_HandleRect: {fileID: 48011364}
   m_Direction: 2
-  m_Value: 0.6770864
-  m_Size: 0.71784353
+  m_Value: 0.67708665
+  m_Size: 0.71784365
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

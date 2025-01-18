@@ -21,7 +21,7 @@ public class LootItem : MonoBehaviour
         {
             if (gameObject.transform.name == "exp(Clone)")
             {
-                TalentTree.MyInstance.points++;
+                UIFridge.MyInstance.point++;
                 Destroy(gameObject);
             }
             else
