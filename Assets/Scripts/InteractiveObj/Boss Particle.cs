@@ -18,12 +18,11 @@ public class BossParticle : MonoBehaviour
 
     private void OnParticleCollision(GameObject other)
     {
-        Debug.Log(other.name);
         if (other.name == "Player")
         {
-            PlayerModel.Instance.hp -= 10;
+            PlayerModel.Instance.hp -= 2;
         }
-        if (PlayerModel.Instance.hp < 0)
+        if (PlayerModel.Instance.hp <= 0)
         {
             Invoke("Destroyplayer", 0.1f);
         }
