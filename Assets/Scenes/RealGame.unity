@@ -798,6 +798,7 @@ MonoBehaviour:
       isCoolingDown: 0
   isRecovering: 0
   characterAnimator: {fileID: 45356340}
+  EXP: {fileID: 0}
   deathTime: 0
   hp: 10
   maxHp: 10
@@ -828,8 +829,8 @@ MonoBehaviour:
   crouchHeight: 0.2
   crouchTime: 1
   isCrouch: 0
-  rb: {fileID: 0}
-  virtualCamera: {fileID: 0}
+  rb: {fileID: 45356333}
+  virtualCamera: {fileID: 992408282}
 --- !u!114 &45356339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -846,6 +847,7 @@ MonoBehaviour:
   glideSpeed: 0
   glideFallingSpeed: 0
   isCanGlide: 0
+  canDefense: 0
 --- !u!95 &45356340
 Animator:
   serializedVersion: 5
@@ -8083,6 +8085,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 45356332}
   virtualCamera: {fileID: 992408282}
+  ViewChangeAfterOpenCGDuringTime: 0
+  targetPos: {x: 0, y: 0, z: 0}
+  targetRot: {x: 0, y: 0, z: 0}
 --- !u!114 &992408282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8989,6 +8994,7 @@ MonoBehaviour:
     effects: []
   isRecovering: 0
   characterAnimator: {fileID: 1167713116}
+  EXP: {fileID: 0}
   deathTime: 0
   hp: 250
   maxDis: 0

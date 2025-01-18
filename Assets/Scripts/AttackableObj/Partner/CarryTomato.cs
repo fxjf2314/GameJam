@@ -66,6 +66,7 @@ public class CarryTomato : Partner
         {
             attack(collision.transform.GetComponent<Character>(), 0);
             StopCoroutine(RollForwardRoutine());
+            collision.gameObject.GetComponent<Character>().isAlive();
             Destroy(gameObject);
         }
     }
