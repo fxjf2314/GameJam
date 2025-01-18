@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ed23b74ac929dd449d96251d81375ad, type: 3}
   m_Name: Apple
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 33f6b9930b7f7844d816aeca574723b2, type: 3}
+  icon: {fileID: 21300000, guid: fe66f5969280627498942ef99640a2a1, type: 3}
   stackSize: 5
-  Title: Apple
-  description: 
-  type: Leg
+  Title: "\u4FDD\u9C9C\u51B0\u5757"
+  description: "\u4F7F\u7528\u540E\u56DE\u590D\u4E24\u6EF4\u8840"
+  type: "\u6062\u590D"

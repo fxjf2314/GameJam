@@ -10,8 +10,9 @@ public class Armor : Item
     [SerializeField]
     private ArmorType armorType;
 
-    [SerializeField]
-    private int id;
+    public int coolingDown;
+    
+    public int id;
 
     internal ArmorType MyArmorType 
     { 
@@ -28,12 +29,12 @@ public class Armor : Item
     {
         string suitName = string.Empty;
         
-        if(id < 3 && id > 0)
+        if(id == 1)
         {
             suitName += string.Format("\n<b>土豆蘑菇</b>----");
             suitName += string.Format("\n两件套效果: \n抵挡一次致命伤 \n(冷却时间一分钟)");
         }
-        if (id < 5 && id > 2)
+        if (id == 2)
         {
             suitName += string.Format("\n<b>鸡蘑菇</b>----");
             suitName += string.Format("\n两件套效果: \n跳跃高度提升 ");

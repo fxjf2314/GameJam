@@ -23,20 +23,22 @@ public class PlayerItemCheck : MonoBehaviour,IDataPersistence
         }
     }
 
+    //鸡蘑菇
     //滑翔相关
     public bool isGetGlideItem;
     public float glideSpeed;
     public float glideFallingSpeed;
     public bool isCanGlide;
     Rigidbody rb;
-
+    //土豆蘑菇相关
+    public bool canDefense;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         isCanGlide = false;
-        isGetGlideItem = true;
+        isGetGlideItem = false;
 
     }
 
@@ -82,17 +84,41 @@ public class PlayerItemCheck : MonoBehaviour,IDataPersistence
         }
     }
 
-    //血量增减
-    void MaxHpUp(int increasementHp)
+    public void startPotatoCooling()
     {
-        PlayerModel.Instance.maxHp += increasementHp;
+        StartCoroutine(DefenseCooling());
+    }
+
+    //血量增减
+    public void MaxHpUp(int increasementHp)
+    {
+        HealthBarController.Instance.AddMaxHp(increasementHp);
         PlayerModel.Instance.hp += increasementHp;
     }
-    void MaxHpDown(int decreasementHp)
+    public void MaxHpDown(int decreasementHp)
     {
         PlayerModel.Instance.maxHp -= decreasementHp;
         PlayerModel.Instance.hp -= decreasementHp;
     }
+    public void SpeedUp(int increaseSpeed)
+    {
+        PlayerController.Instance.moveSpeed += increaseSpeed;
+    }
+    public void JumpSpeedUp(int increaseJumpSpeed)
+    {
+        PlayerController.Instance.jumpSpeed += increaseJumpSpeed;
+    }
+
+
+    IEnumerator DefenseCooling()
+    {
+        canDefense = false;
+
+        yield return new WaitForSeconds(60);
+
+        canDefense = true;
+    }
+
 
 
     public void SaveData(ref GameData gameData)

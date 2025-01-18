@@ -49,13 +49,7 @@ public class BagButton : MonoBehaviour,IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         
-        if (bag != null)
-        {
-            //Debug.Log("111");
-            bag.MyBagScript.OpenClose();
-        }
-
-        mask.enabled = mask.enabled == true ? false : true;
+        
 
     }
 }

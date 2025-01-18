@@ -61,6 +61,10 @@ public class UIManager : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.G))
         {
+            PartnerButton.MyInstance.UpdatePartnerIcon();
+            UIFridge.MyInstance.chickenMashroomCount = 0;
+            UIFridge.MyInstance.PotatoMashroomCount = 0;
+            UIFridge.MyInstance.UpdatePlayerAttribute();
             //mask.color.a = 1;
             horiScrollbar.value = 1;
             vertiScrollbar.value = 0;
@@ -76,6 +80,11 @@ public class UIManager : MonoBehaviour
             UIFridge.MyInstance.OpenClose();
             TalentTree.SetActive(TalentTree.activeSelf == true ? false : true);
 
+        }
+        if(Input.GetKeyDown(KeyCode.B))
+        {
+            bagButton.Bag.MyBagScript.OpenClose();
+            mask.enabled = mask.enabled == true ? false : true;
         }
 
 

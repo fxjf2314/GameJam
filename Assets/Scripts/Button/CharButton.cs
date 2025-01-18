@@ -10,7 +10,9 @@ public class CharButton : MonoBehaviour,IPointerClickHandler,IPointerEnterHandle
     [SerializeField]
     private ArmorType armorType;
     
-    private Armor armor;
+    public Armor armor;
+
+    public Armor partnericon;
 
     [SerializeField]
     private Image armorIcon;
@@ -26,6 +28,10 @@ public class CharButton : MonoBehaviour,IPointerClickHandler,IPointerEnterHandle
                 if(tmp.MyArmorType == armorType) 
                 { 
                     EquipArmor(tmp);
+                    if(tmp.MyArmorType == ArmorType.Partner)
+                    {
+                        partnericon = tmp;
+                    }
                 }
 
             }

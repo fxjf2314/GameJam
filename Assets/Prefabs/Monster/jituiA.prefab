@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2373563632616641713}
   - component: {fileID: 6851784047244344490}
   - component: {fileID: 4739857620584963313}
+  - component: {fileID: 6575344585503602725}
   m_Layer: 0
   m_Name: Attack
   m_TagString: Untagged
@@ -52,8 +53,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3.0278623, y: 1.1522712, z: 3.1374943}
-  m_Center: {x: -0.30391306, y: 0.44724804, z: -0.70153594}
+  m_Size: {x: 2.4, y: 1.1522712, z: 2.4}
+  m_Center: {x: -0.19503707, y: 0.44724804, z: 0.021098256}
 --- !u!114 &4739857620584963313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,6 +70,21 @@ MonoBehaviour:
   index: 0
   attackInterval: 2
   attackRecovery: 0.7
+--- !u!114 &6575344585503602725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 716179327327099288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a05926c875d5504588a3a91c54c9103, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  index: 0
+  attackInterval: 0
+  attackRecovery: 0
 --- !u!1001 &5509399337251487241
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -78,16 +94,28 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: f075712ec8799d740b320efe2156bf01, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f075712ec8799d740b320efe2156bf01, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f075712ec8799d740b320efe2156bf01, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f075712ec8799d740b320efe2156bf01, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.52
+      value: -383.6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f075712ec8799d740b320efe2156bf01, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.68
+      value: 127.100006
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f075712ec8799d740b320efe2156bf01, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10
+      value: -586.7
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f075712ec8799d740b320efe2156bf01, type: 3}
       propertyPath: m_LocalRotation.w
@@ -95,7 +123,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f075712ec8799d740b320efe2156bf01, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f075712ec8799d740b320efe2156bf01, type: 3}
       propertyPath: m_LocalRotation.y
@@ -103,7 +131,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f075712ec8799d740b320efe2156bf01, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f075712ec8799d740b320efe2156bf01, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -116,6 +144,18 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: f075712ec8799d740b320efe2156bf01, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f075712ec8799d740b320efe2156bf01, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4309092712537289103, guid: f075712ec8799d740b320efe2156bf01, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: -4309092712537289103, guid: f075712ec8799d740b320efe2156bf01, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.49
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f075712ec8799d740b320efe2156bf01, type: 3}
       propertyPath: m_Name
@@ -134,7 +174,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f075712ec8799d740b320efe2156bf01, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1895363536599182747}
+      addedObject: {fileID: 8091495133511718628}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f075712ec8799d740b320efe2156bf01, type: 3}
       insertIndex: -1
       addedObject: {fileID: 593403187858577602}
@@ -156,7 +196,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f075712ec8799d740b320efe2156bf01, type: 3}
   m_PrefabInstance: {fileID: 5509399337251487241}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1895363536599182747
+--- !u!114 &8091495133511718628
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -165,9 +205,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4662413431333749592}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53b7c2f9c1fde8c41ac2308f7a7009b0, type: 3}
+  m_Script: {fileID: 11500000, guid: 4c8be5048a17c5040b2e6a0c2a0e2d21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initDamage: 0
   skillList:
   - damageType: 1
     damageAmount: 0
@@ -176,6 +217,11 @@ MonoBehaviour:
     destructive: 0
     effects: []
   hp: 10
+  maxDis: 40
+  minDis: 5
+  jumpSpeed: 5
+  jumpInterval: 5
+  moveSpeed: 15
 --- !u!136 &593403187858577602
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -196,9 +242,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.71
-  m_Height: 2.32
+  m_Height: 2.26
   m_Direction: 1
-  m_Center: {x: -0.12, y: 0.96, z: -0.47}
+  m_Center: {x: 0, y: 0.96, z: 0}
 --- !u!54 &6568296823828200931
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -224,7 +270,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 114
+  m_Constraints: 120
   m_CollisionDetection: 0
 --- !u!95 &6541142969714605645
 Animator:

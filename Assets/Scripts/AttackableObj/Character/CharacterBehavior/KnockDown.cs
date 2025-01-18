@@ -7,6 +7,13 @@ public class KnockDown : MonoBehaviour
 {
     public float duration;
     public CooldownDuration cooldownDuration;
+    [SerializeField]
+    protected Animator characterAnimator;
+
+    private void Start()
+    {
+        characterAnimator = GetComponent<Animator>();
+    }
 
     private void OnEnable()
     {
@@ -17,9 +24,14 @@ public class KnockDown : MonoBehaviour
     private void OnDisable()
     {
         SetState(true);
+        characterAnimator.SetBool("KnockdownFinish", true);
+        characterAnimator.SetBool("KnockDown", false);
+        characterAnimator.SetLayerWeight(0, 1);
+        characterAnimator.Play("zou",1);
     }
-    public void SetState(bool state)
+    public virtual void SetState(bool state)
     {
+
         if (gameObject.CompareTag("Player"))
         {
             gameObject.GetComponent<PlayerController>().enabled = state;

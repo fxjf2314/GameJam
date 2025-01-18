@@ -19,8 +19,17 @@ public class LootItem : MonoBehaviour
     {
         if(collision.collider.CompareTag("Player"))
         {
-            InventoryScript.MyInstance.AddItem((Armor)Instantiate(item));
-            gameObject.SetActive(false);
+            if (gameObject.transform.name == "exp(Clone)")
+            {
+                TalentTree.MyInstance.points++;
+                Destroy(gameObject);
+            }
+            else
+            {
+                InventoryScript.MyInstance.AddItem((Armor)Instantiate(item));
+                Destroy(gameObject);
+            }
+            
         }
     }
 

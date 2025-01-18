@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class UIFridge : MonoBehaviour
 {
     [SerializeField]
-    private CharButton head, chest, back, leg;
+    private CharButton[] Armors = new CharButton[5];
 
     private static UIFridge instance;
     public static UIFridge MyInstance
@@ -23,6 +23,18 @@ public class UIFridge : MonoBehaviour
         }
     }
 
+    public int chickenMashroomCount;
+
+    public int PotatoMashroomCount;
+
+    private float originJumpSpeed;
+
+    private float originMoveSpeed;
+
+    private float currentJumpSpeed;
+
+    private float currentMoveSpeed;
+
     private CanvasGroup canvasGroup;
 
     private Mask mask;
@@ -31,6 +43,8 @@ public class UIFridge : MonoBehaviour
 
     private void Awake()
     {
+        originJumpSpeed = PlayerController.Instance.jumpSpeed;
+        originMoveSpeed = PlayerController.Instance.moveSpeed;
         canvasGroup = GetComponent<CanvasGroup>();
         mask = GameObject.Find("Mask").GetComponent<Mask>();
     }
@@ -55,19 +69,74 @@ public class UIFridge : MonoBehaviour
         switch(armor.MyArmorType)
         {
             case ArmorType.Head:
-                head.EquipArmor(armor);
+                Armors[0].EquipArmor(armor);
                 break;
-            case ArmorType.Chest: 
-                chest.EquipArmor(armor);
+            case ArmorType.Chest:
+                Armors[1].EquipArmor(armor);
                 break;
             case ArmorType.Back:
-                back.EquipArmor(armor);
+                Armors[2].EquipArmor(armor);
                 break;
-            case ArmorType.Leg: 
-                leg.EquipArmor(armor);
+            case ArmorType.Leg:
+                Armors[3].EquipArmor(armor);
+                break;
+            case ArmorType.Partner:
+                Armors[4].EquipArmor(armor);
                 break;
             default: 
                 break;
+        }
+    }
+
+    public void UpdatePlayerAttribute()
+    {
+        
+        if (Armors[2].armor != null && Armors[2].armor.GetTitle() == "º¶≥·")
+        {
+            PlayerItemCheck.Instance.isGetGlideItem = true;
+        }
+        if (Armors[3].armor != null && Armors[3].armor.GetTitle() == "º¶Õ»" && currentMoveSpeed <= originMoveSpeed)
+        {
+            PlayerItemCheck.Instance.SpeedUp(5);
+            currentMoveSpeed = originMoveSpeed + 5;
+        }
+        if (Armors[1].armor != null && Armors[1].armor.GetTitle() == " Ì∆¨" )
+        {
+            PlayerItemCheck.Instance.MaxHpUp(2);
+        }
+        if (Armors[0].armor != null && Armors[0].armor.GetTitle() == "Õ¡∂π")
+        {
+            PlayerItemCheck.Instance.MaxHpUp(3);
+        }
+
+        foreach(CharButton detailarmor in Armors)
+        {
+            if(detailarmor.armor != null )
+            {
+                if (detailarmor.armor.id == 2)
+                {
+                    chickenMashroomCount++;
+                }
+                if (detailarmor.armor.id == 1)
+                {
+                    PotatoMashroomCount++;
+                }
+            }
+            
+        }
+
+        if(chickenMashroomCount < 2 && currentJumpSpeed <= originJumpSpeed)
+        {
+            PlayerController.Instance.jumpSpeed = originJumpSpeed;
+        }
+        else if(chickenMashroomCount >= 2 && currentJumpSpeed <= originJumpSpeed)
+        {
+            PlayerItemCheck.Instance.JumpSpeedUp(5);
+            currentJumpSpeed = originJumpSpeed + 5;
+        }
+        if(PotatoMashroomCount >= 2)
+        {
+            PlayerItemCheck.Instance.canDefense = true;
         }
     }
 }

@@ -66,6 +66,7 @@ public class PlayerController : MonoBehaviour
     //动画
     Animator animator;
 
+    
     private void Start()
     {
         //刚体
@@ -84,7 +85,7 @@ public class PlayerController : MonoBehaviour
         headCheck = transform.Find("HeadCheck");
         groundCheck = transform.Find("GroundCheck");
         //默认可以移动
-        playerCanMove = true;
+        playerCanMove = false;
         isGround = true;
         //胶囊collider.height最小是radius的2倍,太小需要调整radius
         if (crouchHeight <= collider.radius * 2)
@@ -115,6 +116,7 @@ public class PlayerController : MonoBehaviour
     {
         //更新下蹲状态
         IsCrouch();
+        
     }
 
     void MoveAndJump()
@@ -201,7 +203,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            transform.rotation = Quaternion.Euler(0f, 90f, 0f);
+            transform.rotation = Quaternion.Euler(0f, -90f, 0f);
             rb.constraints = RigidbodyConstraints.FreezePositionZ;
         }
         rb.freezeRotation = true;
@@ -282,6 +284,9 @@ public class PlayerController : MonoBehaviour
         }
         return true;
     }
+
+
+    
 }
     
 
