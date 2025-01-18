@@ -1,7 +1,10 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+//using UnityEngine.Windows;
+//using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
@@ -29,6 +32,10 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed, jumpSpeed;
     public float finalMoveSpeed;
     float horizon;
+    //判断角色是沿z轴移动还是沿x轴移动
+    public bool isMoveOnZ;
+    //判断钩锁协程是否完成
+    public bool isRopeFinished;
     //用于地面判定
     Transform groundCheck;
     public float checkGroundRadius;
@@ -51,15 +58,11 @@ public class PlayerController : MonoBehaviour
     public bool isCrouch;
     bool isCanStand;
     bool nextFrameStand;
-    //滑翔相关
-    public float glideSpeed;
-    public float glideFallingSpeed;
-    bool isCanGlide;
     //刚体
     public Rigidbody rb;
     #endregion
     //角色视角
-    public Camera mainCam;
+    public CinemachineVirtualCamera virtualCamera;
     //动画
     Animator animator;
 
@@ -97,32 +100,21 @@ public class PlayerController : MonoBehaviour
         heightDifference = standHeight - crouchHeight;
         originCenter = collider.center;
         isGround = true;
-        isCanGlide = false;
+        //钩锁
+        isRopeFinished = false;
+        //移动方向
+        ChangeMoveDir();
     }
 
     private void FixedUpdate()
     {
         MoveAndJump();
-        OnGlide();
     }
 
     private void Update()
     {
         //更新下蹲状态
         IsCrouch();
-        IsCanGlide();
-    }
-
-    private void IsCanGlide()
-    {
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            isCanGlide = true;
-        }
-        else if (isGround)
-        {
-            isCanGlide = false;
-        }
     }
 
     void MoveAndJump()
@@ -145,6 +137,7 @@ public class PlayerController : MonoBehaviour
             //没有按键输入时把z轴方向速度置0
             Vector3 newVelocity = rb.velocity;
             newVelocity.z = 0;
+            newVelocity.x = 0;
             rb.velocity = newVelocity;
         }
         else
@@ -159,7 +152,7 @@ public class PlayerController : MonoBehaviour
             move = horizon * transform.forward;
             move.Normalize();
             move = move * finalMoveSpeed * Time.fixedDeltaTime * 100;
-            if (transform.forward.z < 0)
+            if (isTurnBack())
             {
                 //面向左边
                 if (horizon > 0)
@@ -185,7 +178,33 @@ public class PlayerController : MonoBehaviour
             //继承y轴速度
             move.y = rb.velocity.y;
             rb.velocity = move;
+
+            bool isTurnBack()
+            {
+                if (isMoveOnZ)
+                {
+                    return transform.forward.z < 0;
+                }
+                else
+                {
+                    return transform.forward.x > 0;
+                }
+            }
         }
+    }
+    public void ChangeMoveDir()//改变移动轴
+    {
+        if (isMoveOnZ)
+        {
+            transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+            rb.constraints = RigidbodyConstraints.FreezePositionX;
+        }
+        else
+        {
+            transform.rotation = Quaternion.Euler(0f, 90f, 0f);
+            rb.constraints = RigidbodyConstraints.FreezePositionZ;
+        }
+        rb.freezeRotation = true;
     }
     void OnJump()
     {
@@ -194,28 +213,17 @@ public class PlayerController : MonoBehaviour
         {
             //重置跳跃高度
             velocity.y = 0;
+            //PlayerItemCheck.Instance.jumpCount = 0;
         }
-        if (Input.GetButton("Jump") && isGround && !isCrouch)
+        if (Input.GetButton("Jump") && !isCrouch && isGround)
         {
             velocity.y += jumpSpeed * 10;
             rb.AddForce(velocity);
+            //PlayerItemCheck.Instance.jumpCount++;
+            //velocity.y = 0;
             //SelectAni(JumpAni.JumpStart);
         }
         //SwitchAni();
-    }
-    void OnGlide()
-    {
-        isGround = Physics.CheckSphere(groundCheck.position, checkGroundRadius, groundLayer);
-        if (isCanGlide && Input.GetKey(KeyCode.Space) && !isGround && !isCrouch && gameObject.transform.position.y >= 3)
-        {
-            rb.velocity = new Vector3(rb.velocity.x, 0.0f, rb.velocity.z);
-            Vector3 glideDirection = Vector3.forward;
-            glideDirection = transform.TransformDirection(glideDirection);
-            glideDirection *= glideSpeed;
-            glideDirection.y = rb.velocity.y;
-            rb.velocity = glideDirection;
-            rb.velocity += Vector3.down * glideFallingSpeed * Time.deltaTime;
-        }
     }
 
     void IsCrouch()
@@ -232,6 +240,8 @@ public class PlayerController : MonoBehaviour
             //开启协程
             //传入mono类，碰撞箱，最终center位置，最终height高度，最终半径
             CrouchAndStand.MyStartCoroutine(this, ref collider, ccFinalCenter, crouchHeight, crouchRadius, crouchTime);
+            //播放下蹲动画
+            MushRoomAnimationChange.SwitchCrouchAni(animator);
         }
         else if (Input.GetKeyUp(KeyCode.LeftControl))//松开蹲键时判断能否起立
         {
@@ -243,6 +253,8 @@ public class PlayerController : MonoBehaviour
                 //摄像机视角恢复,碰撞箱高度恢复（平滑进行）
                 //传入mono类，碰撞箱，最终center位置，最终height高度，最终半径
                 CrouchAndStand.MyStartCoroutine(this, ref collider, originCenter, standHeight, standRadius, crouchTime);
+                //播放起立动画
+                MushRoomAnimationChange.SwitchCrouchAni(animator);
             }
             else
             {

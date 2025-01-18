@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
@@ -7,18 +8,28 @@ public class MonsterController : Character
 {
     Transform player;
     Rigidbody monsterRb;
-    Collider monsterCollider;
-    //寻路导航
-    //NavMeshAgent agent;
+    [Header("索敌半径")][SerializeField]
+    float maxDis;
+    [Header("索敌半径")]
+    [SerializeField]
+    float minDis;
+    [Header("跳跃速度")]
+    [SerializeField]
+    float jumpSpeed;
+    [Header("跳跃间隔时间")]
+    [SerializeField]
+    float jumpInterval = 5;
+    [Header("移动速度")]
+    [SerializeField]
+    float moveSpeed = 10;
+
     private void Start()
     {
-        //transform.AddComponent<NavMeshAgent>();
         player = GameObject.Find("Player").transform;
         monsterRb = GetComponent<Rigidbody>();
-        monsterCollider = GetComponent<Collider>();
     }
-
-    private void Update()
+    
+    protected void Update()
     {
         //发送移动指令
         if (gameObject.name != "boss")
@@ -30,21 +41,64 @@ public class MonsterController : Character
     {
         if (player != null)
         {
-            //玩家和slime距离过近就会追击玩家
-            if (Vector3.Distance(player.position, transform.position) < 3)
+            //玩家和monster距离过近就会追击玩家
+            if (Vector3.Distance(player.position, transform.position) < maxDis && Vector3.Distance(player.position, transform.position) > minDis)
             {
-                Vector3 force = player.position - transform.position;
-                // force.x = 0;
-                //force.y = 0;
-                monsterRb.AddForce(force, ForceMode.Acceleration);
-                //agent.SetDestination(player.position);
-                //agent.enabled = true;
+                HorizonMove();
+                StartCoroutine(VerticalMove(jumpInterval));
             }
             else
             {
-                //agent.SetDestination(slime.position);
-                //agent.enabled= false;
+                monsterRb.velocity = Vector3.zero;
             }
+
+        }
+    }
+
+    void HorizonMove()
+    {
+        Vector3 subPos = player.position - transform.position;
+        if (PlayerController.Instance.isMoveOnZ)
+        {
+            if (transform.forward.z * subPos.z < 0)
+            {
+                //转身面向玩家
+                transform.Rotate(Vector3.up, 180);
+            }
+            if (transform.position.z > player.position.z)
+            {
+                monsterRb.velocity = new Vector3(0, monsterRb.velocity.y, -moveSpeed);
+            }
+            else
+            {
+                monsterRb.velocity = new Vector3(0, monsterRb.velocity.y, moveSpeed);
+            }
+        }
+        else
+        {
+            if (transform.forward.x * subPos.x < 0)
+            {
+                //转身面向玩家
+                transform.Rotate(Vector3.up, 180);
+            }
+            if (transform.position.x > player.position.x)
+            {
+                monsterRb.velocity = new Vector3(-moveSpeed, monsterRb.velocity.y, 0);
+            }
+            else
+            {
+                monsterRb.velocity = new Vector3(moveSpeed, monsterRb.velocity.y, 0);
+            }
+        }
+    }
+
+    IEnumerator VerticalMove(float intreval)
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(intreval);
+            Debug.Log("11");
+            monsterRb.AddForce(Vector3.up * jumpSpeed);
         }
     }
 }

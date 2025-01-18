@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,18 +11,24 @@ public class AnchorPoint : MonoBehaviour
     public float duration = 1.0f; // 绳索移动的持续时间
     public float initialForce = 5.0f; // 初始力的大小
     public float forceIncreaseRate = 10.0f; // 力增加的速率
-    
+    public float distance = 5;//玩家和钩锁的距离
+    public bool leftToRight = true;//默认钩锁方向是从左勾到右边
 
-    private bool isFinished;//判定动作是否完成
+    //确保只有一个协程正在进行
+    Coroutine coroutine;
     private bool isActive = false;
     private void Update()
     {
         //Debug.Log(playerPos.position);
         // 检查玩家是否在锚点的有效范围内
-        if (Mathf.Abs(transform.position.z - playerPos.transform.position.z) <= 5 && playerPos.transform.position.z < transform.position.z)
+        if (Mathf.Abs(transform.position.z - playerPos.transform.position.z) <= distance && transform.position.y > playerPos.transform.position.y && IsLeftTORight())
         {
             isActive = true;
             transform.GetChild(0).gameObject.SetActive(true);
+            if (Input.GetKeyDown(KeyCode.T))
+            {
+                isCanUse();
+            }
             //ropeButton.interactable = true;
         }
         else
@@ -30,23 +37,19 @@ public class AnchorPoint : MonoBehaviour
             transform.GetChild(0).gameObject.SetActive(false);
             //ropeButton.interactable = false;
         }
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            isCanUse();
-        }
-        if (isFinished == true && PlayerController.Instance.isGround)
+        if (PlayerController.Instance.isRopeFinished == true && PlayerController.Instance.isGround)
         {
             PlayerController.Instance.playerCanMove = true;
+            coroutine = null;
         }
 
     }
 
     private void Start()
     {
-        
+
         // 注册绳索按钮的点击事件
         //ropeButton.onClick.AddListener(() => isCanUse());
-        isFinished = true;
         playerRigidbody = playerPos.GetComponent<Rigidbody>();
     }
 
@@ -54,9 +57,16 @@ public class AnchorPoint : MonoBehaviour
     {
         if(isActive == true)
         {
-            StartCoroutine(RopeMove());
-            isFinished = false;
-            PlayerController.Instance.playerCanMove = false;
+            if(coroutine == null)
+            {
+                if (playerPos.transform.forward.z < 0)
+                {
+                    playerPos.transform.Rotate(Vector3.up, 180);
+                }
+                PlayerController.Instance.isRopeFinished = false;
+                PlayerController.Instance.playerCanMove = false;
+                coroutine = StartCoroutine(RopeMove());
+            }           
         }
         
 
@@ -77,7 +87,7 @@ public class AnchorPoint : MonoBehaviour
             playerRigidbody.AddForce(moveDir * currentForce, ForceMode.Acceleration);
 
             // 更新已用时间
-            elapsedTime += Time.deltaTime;
+            elapsedTime += Time.fixedDeltaTime;
             yield return null;
         }
 
@@ -86,8 +96,19 @@ public class AnchorPoint : MonoBehaviour
         playerRigidbody.useGravity = true;
         // 停止玩家的移动
         //playerRigidbody.velocity = Vector3.zero;
-        isFinished = true;
+        PlayerController.Instance.isRopeFinished = true;
     }
 
-    
+    private bool IsLeftTORight()
+    {
+        if(leftToRight)
+        {
+            return playerPos.transform.position.z < transform.position.z;
+        }
+        else
+        {
+            return playerPos.transform.position.z > transform.position.z;
+        }
+    }
+
 }
