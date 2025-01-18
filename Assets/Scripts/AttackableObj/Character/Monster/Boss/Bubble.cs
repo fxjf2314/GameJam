@@ -66,6 +66,9 @@ public class Bubble : MonoBehaviour
         Destroy(GameObject.Find("Player"));
         Destroy(GameObject.Find("MonsterController"));
         Destroy(GameObject.Find("UI"));
+        Destroy(GameObject.Find("UIManager"));
+
+
     }
 
     void openlight()
