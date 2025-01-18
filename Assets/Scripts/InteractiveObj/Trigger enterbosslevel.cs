@@ -23,7 +23,9 @@ public class Triggerenterbosslevel : MonoBehaviour
     private float coloralpha=0;
     private bool ifplayermove = true;
     public bool ifbossmove = false;
-    Vector3 movedir = new Vector3(17.14f, 10.7f, 15.37f);
+    GameObject bosshpbar;
+    GameObject bossmidhp;
+    Vector3 movedir = new Vector3(17.14f, 10.5f, 15.37f);
     Vector3 rotatedir = new Vector3(8.892f, -90, 0);
     Vector3 zanshipos = new Vector3();
     private Transform player;
@@ -47,6 +49,9 @@ public class Triggerenterbosslevel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        bossmidhp = GameObject.Find("midbosshp");
+        bossmidhp.SetActive(false);
+        bosshpbar = GameObject.Find("Bosshpbar");
         Instance.ifbossmove = false;
         player=GameObject.Find("Player").GetComponent<Transform>();
         light=GameObject.Find("Spot Light").GetComponent<Light>();
@@ -79,7 +84,7 @@ public class Triggerenterbosslevel : MonoBehaviour
             }
             else
             {
-                vcamera.position = new Vector3(17.14f, 10.7f, 15.37f);
+                vcamera.position = new Vector3(17.14f, 10.5f, 15.37f);
                 ifmovecamera = false;
             }
         }
@@ -95,6 +100,7 @@ public class Triggerenterbosslevel : MonoBehaviour
             {
                 vcamera.eulerAngles = new Vector3(8.892f, -90, 0);
                 ifrotatecamera = false;
+                
             }
         }
 
@@ -106,6 +112,7 @@ public class Triggerenterbosslevel : MonoBehaviour
         {
             light.range = 150;
             iflight = false;
+            bossmidhp.SetActive(true);
         }
 
         if (shader.color.a < (100/255f)&&ifshader)
@@ -122,9 +129,17 @@ public class Triggerenterbosslevel : MonoBehaviour
         if (!ifplayermove)
         {
             player.gameObject.GetComponent<PlayerController>().enabled = false;
-            player.transform.position = zanshipos;
+            //player.transform.position = zanshipos;
             if (!ifaim && !iflight && !ifshader && !ifmovecamera && !ifrotatecamera)
             {
+                //bosshpbar.SetActive(true);
+                if(bosshpbar.GetComponent<UnityEngine.UI.Slider>().value< bosshpbar.GetComponent<UnityEngine.UI.Slider>().maxValue)
+                {
+                    bosshpbar.GetComponent<UnityEngine.UI.Slider>().value += Time.deltaTime * 200;
+                }
+                GameObject.Find("boss").GetComponent<Animator>().SetInteger("leaf way", 5);
+                Invoke("returnleaf", 0.1f);
+                //GameObject.Find("boss").GetComponent<Animator>().SetInteger("tomatoway", 2);
                 Invoke("backplayermove", 1.5f);
 
             }
@@ -135,7 +150,7 @@ public class Triggerenterbosslevel : MonoBehaviour
     {
         if (other.gameObject.name == "Player")
         {
-            PlayerController.Instance.jumpSpeed = 22;
+            PlayerController.Instance.jumpSpeed = 150;
             GameObject.Find("Virtual Camera").GetComponent<CameraFollow>().enabled = false;
             GameObject.Find("Virtual Camera").GetComponent<CinemachineVirtualCamera>().Follow = null;
             airwall.SetActive(true);
@@ -177,6 +192,7 @@ public class Triggerenterbosslevel : MonoBehaviour
     }
     void backplayermove()
     {
+        
         player.gameObject.GetComponent<PlayerController>().enabled = true;
         ifplayermove = true;
         Instance.ifbossmove = true;
@@ -187,5 +203,10 @@ public class Triggerenterbosslevel : MonoBehaviour
     void killzaotai()
     {
         GameObject.Find("zaotaizhuozi (1)").SetActive(false);
+    }
+
+    void returnleaf()
+    {
+        GameObject.Find("boss").GetComponent<Animator>().SetInteger("leaf way", 0);
     }
 }

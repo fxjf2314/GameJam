@@ -17,7 +17,7 @@ public class gaff : MonoBehaviour
     {
         if (others != null) 
         {
-            if (others.name == "Player"&& others.hp < 0)
+            if (others.name == "Player"&& others.hp <= 0)
             {
                 Invoke("Destroyplayer", 0.1f);
             }
@@ -54,7 +54,7 @@ public class gaff : MonoBehaviour
     {
         if (others != null)
         {
-            others.hp -= 5;
+            others.hp -= 1;
             CancelInvoke("hpdecrease");
         }
     }

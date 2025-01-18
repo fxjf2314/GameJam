@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Xml;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Boss : MonoBehaviour
 {
@@ -15,10 +17,13 @@ public class Boss : MonoBehaviour
     GameObject gaff2;
     GameObject gaff3;
     GameObject boss;
+    GameObject bosshpbar;
 
    // Rigidbody bossrb;
     public int a = 0;//×´Ì¬Á¿
     bool ifcanmove = false;
+    bool ifhpstart = false;
+    bool ifreturnani = false;
     static Boss mInstance;
     public static Boss Instance
     {
@@ -38,6 +43,12 @@ public class Boss : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        ifreturnani = false;
+        ifhpstart = false;
+        bosshpbar = GameObject.Find("Bosshpbar");
+        //bosshpbar.SetActive(false);
+        bosshpbar.GetComponent<Slider>().maxValue = GameObject.Find("boss").GetComponent<MonsterController>().hp;
+        bosshpbar.GetComponent<Slider>().value = 0;
         ifcanmove = true;
         //bossrb= GetComponent<Rigidbody>();
         boss = gameObject;
@@ -60,41 +71,66 @@ public class Boss : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameObject.Find("boss").GetComponent<MonsterController>().hp < 50&& Instance.a ==18)
+        if (GameObject.Find("boss").GetComponent<MonsterController>().hp <= 0)
         {
-            GameObject.Find("skill1").GetComponent<Bossattackdetection>().skill2time -= 5;
-            GameObject.Find("skill1").GetComponent<Bossattackdetection>().skill1time -= 2f;
-            GameObject.Find("skill2").GetComponent<Bossattackdetection>().skill2time -= 5;
-            GameObject.Find("skill2").GetComponent<Bossattackdetection>().skill1time -= 2f;
+            if (!ifreturnani)
+            {
+                animat.SetInteger("tomatoway", 0);
+                animat.SetInteger("leaf way", 0);
+                Invoke("Deathani", 2);
+                ifreturnani=true;
+            }
+            if (particle != null)
+            {
+                particle.SetActive(false);
+            }
+            Instance.a = 20;
+            Bossattackdetection.Instance.now = 0;
+            Bossattackdetection.Instance.nowtime = 1;
+            //Invoke("Deathani", 2);
+            //Deathani();
+            //GameObject.Find("boss").GetComponent<MonsterController>().enabled = false;
+            GameObject.Find("skill1").GetComponent<Bossattackdetection>().enabled = false;
+            GameObject.Find("skill2").GetComponent<Bossskill2>().enabled = false;
+            Invoke("destroyboss", 4f);
+        }
+
+        if (GameObject.Find("boss").GetComponent<MonsterController>().hp < 125&& Instance.a ==18)
+        {
+            GameObject.Find("Player").GetComponent<Rigidbody>().AddForce((GameObject.Find("Player").GetComponent<Transform>().position - transform.position)*1000);
+            Bossattackdetection.Instance.skill2time -= 4;
+            Bossattackdetection.Instance.skill1time -= 1;
+            GameObject.Find("skill1").GetComponent<Bossattackdetection>().attackInterval -= 0.2f;
+            GameObject.Find("boss").GetComponent<MonsterController>().initDamage = 1;
             Instance.a = 0;
-            GameObject.Find("boss").GetComponent<MonsterController>().hp += 30;
             animat.SetInteger("tomatoway", 100);
             animat.SetInteger("leaf way", 2);
             Invoke("Returnleafway", 1);
             Invoke("Bossdisappera", 2.1f);
             ifspeattack = true;
         }
-        /*if (ifspeattack)
-        {
-            Vector3 bossrot = new Vector3(0, 0, 0) - transform.eulerAngles;
-            Vector3 move = aimpos - GameObject.Find("boss").GetComponent<Transform>().position;
-            //GameObject.Find("boss").GetComponent<Rigidbody>().AddForce(move, ForceMode.Acceleration);
-            GameObject.Find("boss").transform.position += move /1000 ;
-            GameObject.Find("boss").transform.eulerAngles += bossrot / 1000;
-            Invoke("bossrotate", 2f);
-        }*/
+
         if (!ifcanmove)
         {
             transform.position=aimpos;
         }
 
+        if (bosshpbar.GetComponent<Slider>().value == 250)
+        {
+            ifhpstart = true;
+        }
+
+        if (ifhpstart)
+        {
+            bosshpbar.GetComponent<Slider>().value = GameObject.Find("boss").GetComponent<MonsterController>().hp;
+        }
     }
     void Bossdisappera()
     {
         CancelInvoke("Bossdisappera");
         boss.SetActive(false);
         boss.transform.position = aimpos;
-        Invoke("Bossappera", 0.2f);
+        Invoke("Bossappera", 0.3f);
         //boss.transform.eulerAngles = Vector3.zero;
     }
 
@@ -127,14 +163,26 @@ public class Boss : MonoBehaviour
         }
     }
 
+    void Deathani()
+    {
+        animat.SetInteger("tomatoway", 7);
+        animat.SetInteger("leaf way", 3);
+    }
+
     void Returnleafway()
     {
         animat.SetInteger("leaf way", 0);
     }
+
+    private void destroyboss()
+    {
+        Destroy(gameObject);
+    }
+
     void bosshpdecrease()
     {
         Instance.a++;       
-        GameObject.Find("boss").GetComponent<MonsterController>().hp -= 1;
+        //GameObject.Find("boss").GetComponent<MonsterController>().hp -= 1;
         
         if (Instance.a == 10) 
         {
@@ -158,12 +206,18 @@ public class Boss : MonoBehaviour
                 animat.SetInteger("leaf way", -4);
                 animat.SetInteger("tomatoway", -10);
             }
-            if (Instance.a == 8)
+            if(Instance.a == 3)
+            {
+                gaff3.SetActive(true);
+            }
+            if (Instance.a == 5)
+            {
+                gaff2.SetActive(true);
+                GameObject.Find("Player").GetComponent<Rigidbody>().AddForce((transform.position-GameObject.Find("Player").GetComponent<Transform>().position ) * 800);
+            }
+            if( Instance.a == 7)
             {
                 gaff.SetActive(true);
-                gaff2.SetActive(true);
-                gaff3.SetActive(true);
-                
             }
             //CancelInvoke("bosshpdecrease");
             Invoke("bosshpdecrease", 1f);
