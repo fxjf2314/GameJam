@@ -57,14 +57,17 @@ MonoBehaviour:
     maxDamage: 0
     destructive: 0
     effects: []
+  isRecovering: 0
   characterAnimator: {fileID: 0}
-  deathTime: 0
+  EXP: {fileID: 5075992812982954258, guid: eeabe84e15f44c6468a919e4449ac9e9, type: 3}
+  deathTime: 2
   hp: 10
-  maxDis: 40
+  maxDis: 50
   minDis: 5
   jumpSpeed: 5
   jumpInterval: 5
   moveSpeed: 15
+  isRot: 1
 --- !u!114 &4394442740412846560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,7 +122,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 120
+  m_Constraints: 114
   m_CollisionDetection: 0
 --- !u!136 &3655417079374931730
 CapsuleCollider:
