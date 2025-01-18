@@ -22,6 +22,8 @@ public class MonsterController : Character
     [Header("移动速度")]
     [SerializeField]
     float moveSpeed = 10;
+    [SerializeField]
+    bool isRot = true;
 
     //存储跳跃协程，只开一个
     Coroutine monsterJump;
@@ -66,9 +68,10 @@ public class MonsterController : Character
         Vector3 subPos = player.position - transform.position;
         if (PlayerController.Instance.isMoveOnZ)
         {
-            if (transform.forward.z * subPos.z < 0 && Vector3.Distance(transform.position,player.position) > 10 )
+            if (transform.forward.x * subPos.z > 0 && Vector3.Distance(transform.position,player.position) > 10 )
             {
                 //转身面向玩家
+                if(isRot)
                 transform.RotateAround(transform.position, Vector3.up, 180);
             }
             if (transform.position.z > player.position.z)
@@ -85,7 +88,8 @@ public class MonsterController : Character
             if (transform.forward.x * subPos.x < 0 && Vector3.Distance(transform.position, player.position) > 10)
             {
                 //转身面向玩家
-                transform.Rotate(Vector3.up, 180);
+                if (isRot)
+                    transform.Rotate(Vector3.up, 180);
             }
             if (transform.position.x > player.position.x)
             {
