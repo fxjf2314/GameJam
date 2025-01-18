@@ -104,7 +104,7 @@ public class Boss : MonoBehaviour
         if (GameObject.Find("boss").GetComponent<MonsterController>().hp < 125&& Instance.a ==18)
         {
             GameObject.Find("Player").GetComponent<Rigidbody>().AddForce((GameObject.Find("Player").GetComponent<Transform>().position - transform.position)*1000);
-            Bossattackdetection.Instance.skill2time -= 4;
+            Bossattackdetection.Instance.skill2time -= 6;
             Bossattackdetection.Instance.skill1time -= 1;
             GameObject.Find("skill1").GetComponent<Bossattackdetection>().attackInterval -= 0.2f;
             GameObject.Find("boss").GetComponent<MonsterController>().initDamage = 1;
@@ -185,7 +185,7 @@ public class Boss : MonoBehaviour
         bossdeath.SetActive(true);
         gameObject.SetActive(false);
         bossdeathparticle.SetActive(true);
-        Invoke("deathparticle", 1);
+        Invoke("deathparticle", 0.8f);
 
     }
 
