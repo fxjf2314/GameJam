@@ -2865,6 +2865,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 977198447}
     m_Modifications:
+    - target: {fileID: 1582717859322575072, guid: 1879e8e0de07bfa44a6c455b018db008, type: 3}
+      propertyPath: particleSystem
+      value: 
+      objectReference: {fileID: 86173903}
+    - target: {fileID: 4151125270181845006, guid: 1879e8e0de07bfa44a6c455b018db008, type: 3}
+      propertyPath: deathEffect
+      value: 
+      objectReference: {fileID: 2284769348458012637, guid: 246dde2245580134ba4ffa6525e57c67, type: 3}
     - target: {fileID: 5095145744640121033, guid: 1879e8e0de07bfa44a6c455b018db008, type: 3}
       propertyPath: m_Name
       value: meishudexihongshi 1
@@ -8836,6 +8844,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 977198447}
     m_Modifications:
+    - target: {fileID: 1582717859322575072, guid: 1879e8e0de07bfa44a6c455b018db008, type: 3}
+      propertyPath: particleSystem
+      value: 
+      objectReference: {fileID: 86173903}
+    - target: {fileID: 4151125270181845006, guid: 1879e8e0de07bfa44a6c455b018db008, type: 3}
+      propertyPath: deathEffect
+      value: 
+      objectReference: {fileID: 2284769348458012637, guid: 246dde2245580134ba4ffa6525e57c67, type: 3}
     - target: {fileID: 5095145744640121033, guid: 1879e8e0de07bfa44a6c455b018db008, type: 3}
       propertyPath: m_Name
       value: meishudexihongshi 1 (1)
@@ -11706,7 +11722,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1439019116691510868, guid: b9f2c3c1aa534ea41871b68a8bc00392, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6423958231699578746, guid: b9f2c3c1aa534ea41871b68a8bc00392, type: 3}
       propertyPath: m_LocalScale.x
