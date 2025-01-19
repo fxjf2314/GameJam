@@ -113,6 +113,7 @@ public class Bossattackdetection : MonoBehaviour
                     if (breakone[i] == null)
                     {
                         breakone[i] = other.gameObject;
+
                         break;
                     }
                 }
@@ -177,7 +178,12 @@ public class Bossattackdetection : MonoBehaviour
         {
             if (breakone[i] != null)
             {
+                if (breakone[i].GetComponent<MeshExploder>() != null)
+                {
+                    breakone[i].GetComponent<MeshExploder>().Explode();
+                }
                 breakone[i].SetActive(false);
+                //Destroy(breakone[i]);
                 breakone[i] = null;
             }
         }

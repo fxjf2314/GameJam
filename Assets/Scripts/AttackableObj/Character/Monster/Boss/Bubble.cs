@@ -50,7 +50,8 @@ public class Bubble : MonoBehaviour
 
     void bubbleburst()
     {
-
+        GameObject.Find("bubble").GetComponent<MeshExploder>().Explode();
+        GameObject.Find("bubble").SetActive(false);
     }
 
     void Leavescene()
@@ -65,9 +66,9 @@ public class Bubble : MonoBehaviour
         Destroy(GameObject.Find("Map"));
         Destroy(GameObject.Find("Player"));
         Destroy(GameObject.Find("MonsterController"));
-        Destroy(GameObject.Find("UI"));
-        Destroy(GameObject.Find("UIManager"));
-
+        //Destroy(GameObject.Find("UI"));
+        //Destroy(GameObject.Find("UIManager"));
+        
 
     }
 

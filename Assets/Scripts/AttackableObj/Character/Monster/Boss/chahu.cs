@@ -33,7 +33,7 @@ public class chahu : MonoBehaviour
         {
             if (collision.gameObject.name == "boss")
             {
-                GameObject.Find("boss").GetComponent<MonsterController>().hp -= 15;
+                GameObject.Find("boss").GetComponent<MonsterController>().hp -= 20;
                 ifdown = false;
                 hasdamage = true;
             }

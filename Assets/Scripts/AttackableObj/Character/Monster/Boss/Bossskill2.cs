@@ -129,7 +129,7 @@ public class Bossskill2 : MonoBehaviour
 
         if (other.tag == "pro gaff" && Bossattackdetection.Instance.now == 2 && index == 1)
         {
-            GameObject.Find("boss").GetComponent<MonsterController>().hp -= 8;
+            GameObject.Find("boss").GetComponent<MonsterController>().hp -= 10;
             //GameObject.Find("boss").GetComponent<KnockDown>().enabled = true;
         }
     }
@@ -204,11 +204,19 @@ public class Bossskill2 : MonoBehaviour
 
     void destroy()
     {
+        GameObject[] deathone= new GameObject[breakone.Length];
         for (int i = 0; i < breakone.Length; i++)
         {
             if (breakone[i] != null)
             {
+                deathone[i] = breakone[i];
                 breakone[i].SetActive(false);
+                if (deathone[i].GetComponent<MeshExploder>() != null)
+                {
+                    deathone[i].GetComponent<MeshExploder>().Explode();
+                }
+                
+                deathone[i]=null;
                 breakone[i] = null;
             }
         }

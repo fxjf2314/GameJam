@@ -150,7 +150,7 @@ public class Triggerenterbosslevel : MonoBehaviour
     {
         if (other.gameObject.name == "Player")
         {
-            PlayerController.Instance.jumpSpeed = 150;
+            //PlayerController.Instance.jumpSpeed = 150;
             GameObject.Find("Virtual Camera").GetComponent<CameraFollow>().enabled = false;
             GameObject.Find("Virtual Camera").GetComponent<CinemachineVirtualCamera>().Follow = null;
             airwall.SetActive(true);
