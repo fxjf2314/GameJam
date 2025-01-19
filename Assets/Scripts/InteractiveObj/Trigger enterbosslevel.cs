@@ -10,6 +10,7 @@ using UnityEngine.UIElements;
 
 public class Triggerenterbosslevel : MonoBehaviour
 {
+    public AudioSource audiosource;
     private bool ifenterbosslevel=false;
     private GameObject airwall;
     private Transform vcamera;
@@ -49,6 +50,7 @@ public class Triggerenterbosslevel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         bossmidhp = GameObject.Find("midbosshp");
         bossmidhp.SetActive(false);
         bosshpbar = GameObject.Find("Bosshpbar");
@@ -151,6 +153,7 @@ public class Triggerenterbosslevel : MonoBehaviour
         if (other.gameObject.name == "Player")
         {
             //PlayerController.Instance.jumpSpeed = 150;
+            Invoke("playaudio", 1);
             GameObject.Find("Virtual Camera").GetComponent<CameraFollow>().enabled = false;
             GameObject.Find("Virtual Camera").GetComponent<CinemachineVirtualCamera>().Follow = null;
             airwall.SetActive(true);
@@ -182,6 +185,11 @@ public class Triggerenterbosslevel : MonoBehaviour
             }
             GameObject.Find("trigger").GetComponent<BoxCollider>().enabled = false;
         }
+    }
+
+    void playaudio()
+    {
+        audiosource.Play();
     }
 
     void stopplayermove()

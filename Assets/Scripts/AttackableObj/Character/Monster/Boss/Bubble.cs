@@ -50,14 +50,18 @@ public class Bubble : MonoBehaviour
 
     void bubbleburst()
     {
-        GameObject.Find("bubble").GetComponent<MeshExploder>().Explode();
+        
         GameObject.Find("bubble").SetActive(false);
     }
 
     void Leavescene()
     {
         leavescene=true;
-        GameObject.Find("Image").SetActive(false);
+        if (GameObject.Find("Image") != null)
+        {
+            GameObject.Find("Image").SetActive(false);
+        }
+        
     }
 
     void Destroyall()
