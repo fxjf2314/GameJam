@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerItemCheck : MonoBehaviour,IDataPersistence
 {
@@ -32,11 +33,18 @@ public class PlayerItemCheck : MonoBehaviour,IDataPersistence
     Rigidbody rb;
     //土豆蘑菇相关
     public bool canDefense;
+    public bool potatoMashroom;
+    public Image cooldownBar;
+    public GameObject defense;
+    public GameObject defenseParticle;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        cooldownBar = GameObject.Find("DefenseCoolingDown").GetComponent<Image>();
+        defense = GameObject.Find("DefenseIcon");
+        defenseParticle = GameObject.Find("DefenseParticle");
         isCanGlide = false;
         isGetGlideItem = false;
 
@@ -86,7 +94,11 @@ public class PlayerItemCheck : MonoBehaviour,IDataPersistence
 
     public void startPotatoCooling()
     {
+        defenseParticle.gameObject.SetActive(false);
         StartCoroutine(DefenseCooling());
+        StartCoroutine(CooldownRoutine());
+        defenseParticle.transform.position = transform.position + Vector3.up * 1;
+        defenseParticle.gameObject.SetActive(true);
     }
 
     //血量增减
@@ -116,9 +128,32 @@ public class PlayerItemCheck : MonoBehaviour,IDataPersistence
 
         yield return new WaitForSeconds(60);
 
-        canDefense = true;
+        if(potatoMashroom)
+        {
+            canDefense = true;
+        }
+        
     }
 
+    IEnumerator CooldownRoutine()
+    {
+
+        defense.GetComponentInParent<CanvasGroup>().alpha = 1.0f;
+        cooldownBar.enabled = true;
+        cooldownBar.fillAmount = 1.0f;  // 初始化为1
+
+        float elapsed = 0.0f;
+        while (elapsed < 60.0f)
+        {
+            elapsed += Time.deltaTime;
+            float progress = elapsed / 60.0f;
+            cooldownBar.fillAmount = 1 - progress;  // 从1逐渐减少到0
+            yield return null;
+        }
+
+        cooldownBar.enabled = false;
+        defense.GetComponentInParent<CanvasGroup>().alpha = 0.0f;
+   }
 
 
     public void SaveData(ref GameData gameData)

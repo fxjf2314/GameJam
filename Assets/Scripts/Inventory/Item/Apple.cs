@@ -7,6 +7,7 @@ public class Apple : Item, IUseable
 {
     public void Use()
     {
+        HealthBarController.Instance.AddHeart(2+1);
         Remove();
     }
 

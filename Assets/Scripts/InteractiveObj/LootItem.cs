@@ -31,6 +31,7 @@ public class LootItem : MonoBehaviour
             }
             
         }
+        PlayerPickSound.MyInstance.PlayPickupSound();
     }
 
     void Start()

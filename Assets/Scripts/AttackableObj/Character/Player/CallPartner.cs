@@ -29,6 +29,7 @@ public class CallPartner : MonoBehaviour
 
     void Start()
     {
+        cooldownBar = GameObject.Find("PartCoolingDown").GetComponent<Image>();
         // 初始化进度条
         cooldownBar.fillAmount = 0.0f;
         //StartCoroutine(CooldownRoutine());

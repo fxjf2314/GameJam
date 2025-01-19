@@ -8,6 +8,10 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    private bool isGDown;
+    private bool isBDown;
+    private bool isCDown;
+
     private Scrollbar horiScrollbar;
     private Scrollbar vertiScrollbar;
     
@@ -59,8 +63,9 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.G))
+        if(Input.GetKeyDown(KeyCode.G) && !isCDown && !isBDown)
         {
+            isGDown = !isGDown;
             PartnerButton.MyInstance.UpdatePartnerIcon();
             UIFridge.MyInstance.chickenMashroomCount = 0;
             UIFridge.MyInstance.PotatoMashroomCount = 0;
@@ -73,16 +78,17 @@ public class UIManager : MonoBehaviour
             UIFridge.MyInstance.OpenClose();
             bagButton.Bag.MyBagScript.OpenClose();
         }
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.C) && !isBDown && !isGDown)
         {
             //bagButton.Bag.MyBagScript.Close();
-               
+            isCDown = !isCDown;
             UIFridge.MyInstance.OpenClose();
             TalentTree.SetActive(TalentTree.activeSelf == true ? false : true);
 
         }
-        if(Input.GetKeyDown(KeyCode.B))
+        if(Input.GetKeyDown(KeyCode.B) && !isGDown && !isCDown)
         {
+            isBDown = !isBDown;
             bagButton.Bag.MyBagScript.OpenClose();
             mask.enabled = mask.enabled == true ? false : true;
         }
@@ -108,7 +114,7 @@ public class UIManager : MonoBehaviour
         if (clickable.MyCount > 1)
         {
             clickable.MyStackText.text = clickable.MyCount.ToString();
-            clickable.MyStackText.color = Color.white;
+            clickable.MyStackText.color = Color.black;
             clickable.MyIcon.color = Color.white;
         }
         else
@@ -141,5 +147,5 @@ public class UIManager : MonoBehaviour
         tooltip.SetActive(false);
     }
 
-
+    
 }

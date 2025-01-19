@@ -32,7 +32,7 @@ public class Bossskill2 : MonoBehaviour
         Bossattackdetection.Instance.skill1time = 6;
         Bossattackdetection.Instance.skill2time = 20;
         ifreturncamera = false;
-        ifbrakecamera = true;
+        ifbrakecamera = false;
         ifhavebrake = false;
         animator = GameObject.Find("boss").GetComponent<Animator>();
         Bossattackdetection.Instance.now = 0;
@@ -44,19 +44,19 @@ public class Bossskill2 : MonoBehaviour
 
     private void Update()
     {
-        /*
+        
         if (ifbrakecamera)
         {
             Vector3 rotatedir = new Vector3();
-            float brakespeed = 30f;
+            float brakespeed = 150f;
             if (!ifreturncamera)
             {
-                if (camera.eulerAngles.x < 30)
+                if (camera.eulerAngles.x < 20)
                 {
                     rotatedir = camera.eulerAngles;
                     rotatedir.x += Time.deltaTime * brakespeed;
                     //rotatedir.y += Time.deltaTime * brakespeed;
-                    rotatedir.z += Time.deltaTime * brakespeed;
+                    //rotatedir.z += Time.deltaTime * brakespeed;
                     camera.eulerAngles = rotatedir;
                 }
                 else
@@ -66,25 +66,25 @@ public class Bossskill2 : MonoBehaviour
             }
             if (ifreturncamera)
             {
-                if(camera.eulerAngles.x > 8.892f&& camera.eulerAngles.z>0)
+                if(camera.eulerAngles.x > 8.892f)
                 {
                     rotatedir = camera.eulerAngles;
                     rotatedir.x -= Time.deltaTime * brakespeed;
                     //rotatedir.y -= Time.deltaTime * brakespeed;
-                    rotatedir.z -= Time.deltaTime * brakespeed;
+                    //rotatedir.z -= Time.deltaTime * brakespeed;
                     camera.eulerAngles = rotatedir;
                 }
                 else
                 {
                     ifreturncamera=false;
                     camera.eulerAngles = aimrotate;
-                    ifhavebrake = true;
+                    ifhavebrake = false;
                     ifbrakecamera = false;
                 }
             }
            
         }
-        */
+        
         if (Triggerenterbosslevel.Instance.ifbossmove)
         {
             realtime = realtime + Time.deltaTime;
@@ -115,7 +115,7 @@ public class Bossskill2 : MonoBehaviour
                 Vector3 force = PlayerController.Instance.transform.position - GameObject.Find("boss").transform.position;
                 force.y = -50f;
                 GameObject.Find("boss").GetComponent<Rigidbody>().AddForce(force * 0.1f, ForceMode.Acceleration);
-                if (GameObject.Find("boss").GetComponent<Transform>().position.y < 1 && !ifhavebrake)
+                if (GameObject.Find("boss").GetComponent<Transform>().position.y <= 1 && !ifhavebrake)
                 {
                     ifbrakecamera = true;
                     ifhavebrake = true;

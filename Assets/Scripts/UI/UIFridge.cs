@@ -99,17 +99,10 @@ public class UIFridge : MonoBehaviour
         }
         if (Armors[3].armor != null && Armors[3].armor.GetTitle() == "º¶Õ»" && currentMoveSpeed <= originMoveSpeed)
         {
-            PlayerItemCheck.Instance.SpeedUp(5);
-            currentMoveSpeed = originMoveSpeed + 5;
+            PlayerItemCheck.Instance.SpeedUp(8);
+            currentMoveSpeed = originMoveSpeed + 8;
         }
-        if (Armors[1].armor != null && Armors[1].armor.GetTitle() == " Ì∆¨" )
-        {
-            PlayerItemCheck.Instance.MaxHpUp(2);
-        }
-        if (Armors[0].armor != null && Armors[0].armor.GetTitle() == "Õ¡∂π")
-        {
-            PlayerItemCheck.Instance.MaxHpUp(3);
-        }
+        
 
         foreach(CharButton detailarmor in Armors)
         {
@@ -133,12 +126,18 @@ public class UIFridge : MonoBehaviour
         }
         else if(chickenMashroomCount >= 2 && currentJumpSpeed <= originJumpSpeed)
         {
-            PlayerItemCheck.Instance.JumpSpeedUp(5);
-            currentJumpSpeed = originJumpSpeed + 5;
+            PlayerItemCheck.Instance.JumpSpeedUp(20);
+            currentJumpSpeed = originJumpSpeed + 20;
         }
         if(PotatoMashroomCount >= 2)
         {
             PlayerItemCheck.Instance.canDefense = true;
+            PlayerItemCheck.Instance.potatoMashroom = true;
+        }
+        else if(PotatoMashroomCount < 2) 
+        { 
+            PlayerItemCheck.Instance.potatoMashroom = false;
+
         }
     }
 }

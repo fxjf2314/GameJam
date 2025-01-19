@@ -60,7 +60,13 @@ public class InventoryScript: MonoBehaviour
         bag.Initialize(20);
         //bag.InitialDes();
         bag.Use();
-        
+        for (int i = 0; i < 10; i++)
+        {
+            Apple apple = (Apple)Instantiate(items[1]);
+            AddItem(apple);
+        }
+        AddItem((Armor)Instantiate(items[6]));
+
     }
 
     private void Update()
@@ -71,18 +77,18 @@ public class InventoryScript: MonoBehaviour
             bag.Initialize(27);
             bag.Use();
         }*/
-        if(Input.GetKeyDown(KeyCode.M))
+        /*if(Input.GetKeyDown(KeyCode.M))
         {
             Bag bag = (Bag)Instantiate(items[0]);
             bag.Initialize(20);
             AddItem(bag);
-        }
-        if(Input.GetKeyDown(KeyCode.L))
+        }*/
+        /*if(Input.GetKeyDown(KeyCode.L))
         {
             Apple apple = (Apple)Instantiate(items[1]);
             AddItem(apple);
-        }
-        if(Input.GetKeyDown(KeyCode.P))
+        }*/
+        if (Input.GetKeyDown(KeyCode.P))
         {
             AddItem((Armor)Instantiate(items[2]));
             AddItem((Armor)Instantiate(items[3]));
