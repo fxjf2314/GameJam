@@ -11,7 +11,8 @@ public abstract class Character: AttackableObj
     [SerializeField]
     GameObject EXP;
 
-
+    [SerializeField]
+    GameObject deathEffect;
 
     [SerializeField]
     private float deathTime;
@@ -71,6 +72,10 @@ public abstract class Character: AttackableObj
         yield return new WaitForSeconds(deathTime);
         if (gameObject.transform.CompareTag("Monster"))
         {
+            if(deathEffect != null)
+            {
+                Instantiate(deathEffect,gameObject.transform.position,Quaternion.identity);
+            }
             Instantiate(EXP,gameObject.transform.position,Quaternion.identity);
         }
         gameObject.SetActive(false);

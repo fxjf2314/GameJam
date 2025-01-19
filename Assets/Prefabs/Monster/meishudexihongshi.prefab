@@ -208,14 +208,15 @@ MonoBehaviour:
   isRecovering: 0
   characterAnimator: {fileID: 5473027539717836704}
   EXP: {fileID: 5075992812982954258, guid: eeabe84e15f44c6468a919e4449ac9e9, type: 3}
+  deathEffect: {fileID: 2284769348458012637, guid: 246dde2245580134ba4ffa6525e57c67, type: 3}
   deathTime: 2
   hp: 6
-  maxDis: 10
+  maxDis: 50
   minDis: 1.5
   jumpSpeed: 0
   jumpInterval: 5
-  moveSpeed: 10
-  isRot: 1
+  moveSpeed: 50
+  isRot: 0
 --- !u!54 &2263595128968385197
 Rigidbody:
   m_ObjectHideFlags: 0
