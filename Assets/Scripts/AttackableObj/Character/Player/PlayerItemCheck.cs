@@ -114,7 +114,7 @@ public class PlayerItemCheck : MonoBehaviour,IDataPersistence
     }
     public void SpeedUp(int increaseSpeed)
     {
-        PlayerController.Instance.moveSpeed += increaseSpeed;
+        PlayerController.Instance.finalMoveSpeed += increaseSpeed;
     }
     public void JumpSpeedUp(int increaseJumpSpeed)
     {

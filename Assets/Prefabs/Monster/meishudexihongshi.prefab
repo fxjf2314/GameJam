@@ -163,9 +163,6 @@ PrefabInstance:
       addedObject: {fileID: 577224975188752793}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 96b93dccf609fdc42854b057dc27c632, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8554552300921262020}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 96b93dccf609fdc42854b057dc27c632, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 8859973934831057776}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 96b93dccf609fdc42854b057dc27c632, type: 3}
       insertIndex: -1
@@ -210,7 +207,7 @@ MonoBehaviour:
   EXP: {fileID: 5075992812982954258, guid: eeabe84e15f44c6468a919e4449ac9e9, type: 3}
   deathEffect: {fileID: 2284769348458012637, guid: 246dde2245580134ba4ffa6525e57c67, type: 3}
   deathTime: 2
-  hp: 6
+  hp: 5
   maxDis: 50
   minDis: 1.5
   jumpSpeed: 0
@@ -267,20 +264,6 @@ CapsuleCollider:
   m_Height: 1.2771287
   m_Direction: 1
   m_Center: {x: -0.008967042, y: 0.5496699, z: 0.000000059604645}
---- !u!114 &8554552300921262020
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5095145744640121033}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1da7126949672354b92d64376a066c2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  index: 0
-  attackInterval: 3
 --- !u!114 &8859973934831057776
 MonoBehaviour:
   m_ObjectHideFlags: 0

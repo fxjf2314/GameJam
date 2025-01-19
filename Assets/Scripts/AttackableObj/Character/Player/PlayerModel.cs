@@ -47,6 +47,21 @@ public class PlayerModel : Character,IDataPersistence
             skill.effects = new List<Effect>(skillList[index].effects);
             skillList[index] = skill;
         }
+        else
+        {
+            if (Random.Range(0, 101) <= KnockDownRate)
+            {
+                Skill skill = new Skill();
+                skill.damageType = DamageType.SimpleDamage;
+                skill.damageAmount = skillList[index].damageAmount;
+                skill.minDamage = skillList[index].minDamage;
+                skill.maxDamage = skillList[index].maxDamage;
+                skill.destructive = skillList[index].destructive;
+
+                skill.effects = new List<Effect>(skillList[index].effects);
+                skillList[index] = skill;
+            }
+        }
         base.attack(target, index);
     }
 
