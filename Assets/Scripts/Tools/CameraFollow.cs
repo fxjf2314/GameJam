@@ -23,7 +23,7 @@ public class CameraFollow : MonoBehaviour
     {
         instance = this;
         virtualCamera = GetComponent<CinemachineVirtualCamera>();
-        framingTransposer = PlayerController.Instance.virtualCamera.GetCinemachineComponent<CinemachineFramingTransposer>();
+        virtualCamera.GetCinemachineComponent<CinemachineFramingTransposer>();
         player = GameObject.Find("Player").transform;
         // 创建一个空对象作为摄像机的跟随点
         followPoint = new GameObject("FollowPoint").transform;

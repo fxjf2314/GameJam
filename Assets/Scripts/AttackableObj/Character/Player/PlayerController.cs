@@ -85,7 +85,7 @@ public class PlayerController : MonoBehaviour
         headCheck = transform.Find("HeadCheck");
         groundCheck = transform.Find("GroundCheck");
         //默认可以移动
-        playerCanMove = false;
+        playerCanMove = true;
         isGround = true;
         //胶囊collider.height最小是radius的2倍,太小需要调整radius
         if (crouchHeight <= collider.radius * 2)

@@ -29,9 +29,14 @@ public class PlayerPick : MonoBehaviour
         // 使用 Lerp 逐渐移动物品到玩家背包位置
         while (timePassed < 1f)
         {
+            
             timePassed += Time.deltaTime * pickupSpeed;
             timePassed = Mathf.Clamp01(timePassed);
-            itemTransform.position = Vector3.Lerp(startPosition, endPosition, timePassed);
+            if(itemTransform != null )
+            {
+                itemTransform.position = Vector3.Lerp(startPosition, endPosition, timePassed);
+            }
+            
             
             yield return null;
         }

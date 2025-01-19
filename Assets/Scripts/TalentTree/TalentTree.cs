@@ -72,4 +72,13 @@ public class TalentTree : MonoBehaviour
         talentPointText.text = points.ToString();
     }
 
+    private void OnEnable()
+    {
+        if(UIFridge.MyInstance.point != 0)
+        {
+            points += UIFridge.MyInstance.point;
+            UpdateTalentPointText();
+            UIFridge.MyInstance.point = 0;
+        }
+    }
 }

@@ -6,13 +6,13 @@ using UnityEngine;
 public class DeathEffect : MonoBehaviour
 {
     public GameObject prefab;
-    public Transform parent;
+    //public Transform parent;
     public GameObject particleSystem;
     private void OnDisable()
     {
         if (prefab != null)
         {
-                GameObject instantiatedObject = Instantiate(prefab, gameObject.transform.position, prefab.transform.rotation, parent);
+                GameObject instantiatedObject = Instantiate(prefab, gameObject.transform.position, prefab.transform.rotation);
         }
         particleSystem.transform.position = gameObject.transform.position;
         particleSystem.SetActive(true);

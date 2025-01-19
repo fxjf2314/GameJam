@@ -44,7 +44,7 @@ public class OpenCG : MonoBehaviour
         {
             knifeCoroutine = StartCoroutine(KnifeRotate(Vector3.left, 35, DownDuringTime));
             yield return new WaitForSeconds(0.2f);
-            StartCoroutine(PlayerHash(player.position, new Vector3(-230.7f, 130.5f, -585.7f), player.rotation.eulerAngles, new Vector3(90, -90,0)));
+            StartCoroutine(PlayerHash(player.position, new Vector3(-230.7f, 132.5f, -585.7f), player.rotation.eulerAngles, new Vector3(90, -90,0)));
         }
     }
     
@@ -62,14 +62,14 @@ public class OpenCG : MonoBehaviour
         //ÏÂ½µ½×¶Î
         if(playerCoroutine == null)
         {
-            playerCoroutine = StartCoroutine(PlayerHash(player.position, new Vector3(-247.6f, 129.4506f, -585.7f), player.rotation.eulerAngles, new Vector3(90, -90, 0)));
+            playerCoroutine = StartCoroutine(PlayerHash(player.position, new Vector3(-247.6f, 131.4506f, -585.7f), player.rotation.eulerAngles, new Vector3(90, -90, 0)));
         }
         else
         {
             if (playerStandCoroutine == null)
             {
                 yield return new WaitForSeconds(0.5f);
-                playerStandCoroutine = StartCoroutine(PlayerHash(player.position, new Vector3(-239.6f, 122.1506f, -585.7f), player.rotation.eulerAngles, new Vector3(0, -90, 0)));
+                playerStandCoroutine = StartCoroutine(PlayerHash(player.position, new Vector3(-239.6f, 124.9509f, -585.7f), player.rotation.eulerAngles, new Vector3(0, -90, 0)));
             }
             else
             {
