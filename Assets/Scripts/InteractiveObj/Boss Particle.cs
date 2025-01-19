@@ -21,11 +21,9 @@ public class BossParticle : MonoBehaviour
         if (other.name == "Player")
         {
             PlayerModel.Instance.hp -= 2;
+            PlayerModel.Instance.isAlive();
         }
-        if (PlayerModel.Instance.hp <= 0)
-        {
-            Invoke("Destroyplayer", 0.1f);
-        }
+        
     }
 
     void Destroyplayer()

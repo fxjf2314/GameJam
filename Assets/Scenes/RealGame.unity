@@ -888,6 +888,7 @@ MonoBehaviour:
   EXP: {fileID: 0}
   deathEffect: {fileID: 0}
   deathTime: 0
+  deathUI: {fileID: 0}
   hp: 10
   maxHp: 10
   KnockDownRate: 50
@@ -6571,11 +6572,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ffafbd21fe6c12d4d9538eb38d27e63a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 17.4
+      value: 17.49
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ffafbd21fe6c12d4d9538eb38d27e63a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.75
+      value: 5.46
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ffafbd21fe6c12d4d9538eb38d27e63a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -17481,7 +17482,7 @@ Transform:
   m_GameObject: {fileID: 725391430}
   serializedVersion: 2
   m_LocalRotation: {x: -0.5, y: -0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: 0, y: 1.41, z: -0}
+  m_LocalPosition: {x: 0, y: 1.47, z: -0}
   m_LocalScale: {x: 0.42903638, y: 0.42903632, z: 0.42903632}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -29915,6 +29916,7 @@ MonoBehaviour:
   EXP: {fileID: 0}
   deathEffect: {fileID: 0}
   deathTime: 0
+  deathUI: {fileID: 0}
   hp: 250
   maxDis: 0
   minDis: 0
@@ -40906,6 +40908,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 1d37fd50620f5874e9f2ff5950787150, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1d37fd50620f5874e9f2ff5950787150, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 1d37fd50620f5874e9f2ff5950787150, type: 3}
       propertyPath: m_TagString
