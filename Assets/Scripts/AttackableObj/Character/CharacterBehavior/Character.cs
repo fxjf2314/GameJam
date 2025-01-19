@@ -17,6 +17,8 @@ public abstract class Character: AttackableObj
     [SerializeField]
     private float deathTime;
 
+    public GameObject deathUI;
+
     public int hp;
 
     public void isAlive()
@@ -79,6 +81,8 @@ public abstract class Character: AttackableObj
             Instantiate(EXP,gameObject.transform.position,Quaternion.identity);
         }
         gameObject.SetActive(false);
+        if(gameObject.transform.CompareTag("Player"))
+            deathUI.SetActive(true);
     }
 
     private void ChiliKnockDown()
