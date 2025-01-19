@@ -490,7 +490,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ac0e57cca47622478679b9b0d52f068, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldownDuration: 2
+  cooldownDuration: 6
   isCoolingDown: 0
 --- !u!114 &4721570104462415791
 MonoBehaviour:
@@ -504,7 +504,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee9b1a0b66039d346898c824a9c08fcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 6
+  duration: 2
   cooldownDuration: {fileID: 5296698203226276265}
   characterAnimator: {fileID: 3290876893947681388}
 --- !u!114 &4495876867601503132

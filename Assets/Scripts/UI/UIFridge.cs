@@ -99,8 +99,8 @@ public class UIFridge : MonoBehaviour
         }
         if (Armors[3].armor != null && Armors[3].armor.GetTitle() == "º¶Õ»" && currentMoveSpeed <= originMoveSpeed)
         {
-            PlayerItemCheck.Instance.SpeedUp(8);
-            currentMoveSpeed = originMoveSpeed + 8;
+            PlayerItemCheck.Instance.SpeedUp((int)(originMoveSpeed * 2));
+            currentMoveSpeed = originMoveSpeed + (int)(originMoveSpeed * 2);
         }
         
 
@@ -126,8 +126,8 @@ public class UIFridge : MonoBehaviour
         }
         else if(chickenMashroomCount >= 2 && currentJumpSpeed <= originJumpSpeed)
         {
-            PlayerItemCheck.Instance.JumpSpeedUp(20);
-            currentJumpSpeed = originJumpSpeed + 20;
+            PlayerItemCheck.Instance.JumpSpeedUp((int)(originJumpSpeed * 1.5));
+            currentJumpSpeed = originJumpSpeed + (int)(originJumpSpeed * 1.5);
         }
         if(PotatoMashroomCount >= 2)
         {
