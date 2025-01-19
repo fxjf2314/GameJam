@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 5798738419000425250}
   - component: {fileID: 9151096564159717135}
   - component: {fileID: 3919359698202740260}
-  - component: {fileID: 4174258210162405484}
   m_Layer: 0
   m_Name: NewGameBtn
   m_TagString: Untagged
@@ -122,22 +121,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &4174258210162405484
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 733346849280964269}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d51f3a7c41ab0346b49ae50d456bece, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MarkType: 0
-  CustomComponentName: GameExitBtn
-  CustomComment: 
-  mComponentName: UnityEngine.UI.Button
 --- !u!1 &1948202843851848348
 GameObject:
   m_ObjectHideFlags: 0
@@ -149,7 +132,6 @@ GameObject:
   - component: {fileID: 7676216926412178606}
   - component: {fileID: 2142566666507845945}
   - component: {fileID: 6424715965467874398}
-  - component: {fileID: 5399600399990466905}
   m_Layer: 0
   m_Name: Title
   m_TagString: Untagged
@@ -206,8 +188,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u8611\u8611\u7684\u5947\u5999\u5192\u9669"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 223cea93751c5e94f9f4be02dd023edd, type: 2}
-  m_sharedMaterial: {fileID: 7561750412153749846, guid: 223cea93751c5e94f9f4be02dd023edd, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -273,22 +255,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &5399600399990466905
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1948202843851848348}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d51f3a7c41ab0346b49ae50d456bece, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MarkType: 0
-  CustomComponentName: GameExitBtn
-  CustomComment: 
-  mComponentName: TMPro.TextMeshProUGUI
 --- !u!1 &3497511834978691245
 GameObject:
   m_ObjectHideFlags: 0
@@ -301,7 +267,6 @@ GameObject:
   - component: {fileID: 8008235720658800380}
   - component: {fileID: 6843582601042167505}
   - component: {fileID: 2183217496522290213}
-  - component: {fileID: 7466372173010631874}
   m_Layer: 0
   m_Name: GameExitBtn
   m_TagString: Untagged
@@ -411,22 +376,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &7466372173010631874
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3497511834978691245}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d51f3a7c41ab0346b49ae50d456bece, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MarkType: 0
-  CustomComponentName: GameExitBtn
-  CustomComment: 
-  mComponentName: UnityEngine.UI.Button
 --- !u!1 &3593244068482125747
 GameObject:
   m_ObjectHideFlags: 0
@@ -494,8 +443,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u9000\u51FA\u6E38\u620F"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 223cea93751c5e94f9f4be02dd023edd, type: 2}
-  m_sharedMaterial: {fileID: 7561750412153749846, guid: 223cea93751c5e94f9f4be02dd023edd, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -628,8 +577,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u5F00\u59CB\u6E38\u620F"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 223cea93751c5e94f9f4be02dd023edd, type: 2}
-  m_sharedMaterial: {fileID: 7561750412153749846, guid: 223cea93751c5e94f9f4be02dd023edd, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -762,8 +711,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u6E38\u620F\u8BBE\u7F6E"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 223cea93751c5e94f9f4be02dd023edd, type: 2}
-  m_sharedMaterial: {fileID: 7561750412153749846, guid: 223cea93751c5e94f9f4be02dd023edd, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -896,8 +845,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u7EE7\u7EED\u6E38\u620F"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 223cea93751c5e94f9f4be02dd023edd, type: 2}
-  m_sharedMaterial: {fileID: 7561750412153749846, guid: 223cea93751c5e94f9f4be02dd023edd, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -975,7 +924,6 @@ GameObject:
   - component: {fileID: 6758601967035605561}
   - component: {fileID: 7731523540282925538}
   - component: {fileID: 5290241616533192070}
-  - component: {fileID: 2094399680826933848}
   m_Layer: 0
   m_Name: ContinueGameBtn
   m_TagString: Untagged
@@ -1085,22 +1033,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &2094399680826933848
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6854140919812190695}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d51f3a7c41ab0346b49ae50d456bece, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MarkType: 0
-  CustomComponentName: GameExitBtn
-  CustomComment: 
-  mComponentName: UnityEngine.UI.Button
 --- !u!1 &7041371708265218972
 GameObject:
   m_ObjectHideFlags: 0
@@ -1113,7 +1045,6 @@ GameObject:
   - component: {fileID: 8391328019646906350}
   - component: {fileID: 3437671065183150473}
   - component: {fileID: 3250451104952114380}
-  - component: {fileID: 7619095937303752436}
   m_Layer: 0
   m_Name: SettingBtn
   m_TagString: Untagged
@@ -1223,22 +1154,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &7619095937303752436
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7041371708265218972}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d51f3a7c41ab0346b49ae50d456bece, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MarkType: 0
-  CustomComponentName: GameExitBtn
-  CustomComment: 
-  mComponentName: UnityEngine.UI.Button
 --- !u!1 &8277352529239112942
 GameObject:
   m_ObjectHideFlags: 0

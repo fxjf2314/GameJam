@@ -53,8 +53,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1.3648434, z: 5}
-  m_Center: {x: 0, y: 0.38410664, z: -4.0186396}
+  m_Size: {x: 1, y: 1.3648434, z: 5.9999375}
+  m_Center: {x: 0, y: 0.38410664, z: -3.5186698}
 --- !u!114 &1154994015997004170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,7 +140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4707816365121317595, guid: 92fa0ef4e9f38694b9f220dcaf6c083b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.76
+      value: -1.35
       objectReference: {fileID: 0}
     - target: {fileID: 4707816365121317595, guid: 92fa0ef4e9f38694b9f220dcaf6c083b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -358,6 +358,7 @@ MonoBehaviour:
   jumpSpeed: 0
   jumpInterval: 5
   moveSpeed: 8
+  isRot: 1
   fire: {fileID: 4040922808327316497}
   fireCollider: {fileID: 4269895871856423929}
   shootFire: {fileID: 1154994015997004170}
